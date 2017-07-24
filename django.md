@@ -98,6 +98,10 @@ admin.site.register(MN, MNAdmin)
 
 https://docs.djangoproject.com/en/1.11/topics/db/examples/
 
+- Abstract model = a place to store a common field among many tables. Does not actually create a table
+- ManyToManyField = A pizza can have many toppings, and a topping may be on many pizzas
+- Extends something to another model
+
 ````
 from django.db import models
 
@@ -131,12 +135,14 @@ class ClassName(models.Model):
     many_to_many = models.ManyToManyField(<target_model>)
     many_to_many = models.ManyToManyField(
         <target_model>,
-        through='Intermediate table',
+        through='Intermediate table', # can make your own if you would like to add extra data
         )
 
     class Meta:
-        ordering = ['var']
+        ordering = ['-var']
+        verbose_name = 'thing'
         verbose_name_plural = 'things'
+        unique_together = (('dog', 'cat'),)
 
     __str__(self)
         return self.var
@@ -162,14 +168,66 @@ class AbstractChildModel(AbstractBaseModel):
 
 ### urls.py
 
+* url contents are always delivered as strings in the following format `(request, var, var, ...)`
+* `(?P(<name>pattern))` = named groups
+* capture groups can be nested
+* `?:` = non-captured group
+* name-spaced urls can be a best practice `<app>:<url>` when clashing url names. For example `admin:index` or `sports:polls:index`.
+
+
+Reversing URLS in Python and Templates
+
 ````
-from django.conf.urls import url
+from django.urls import reverse
+
+year = 2006
+reverse('url-name', args=(year,))
+reverse('polls:index', current_app=self.request.resolver_match.namespace)
+
+
+In templates, urls called via: {% url 'url-name' <vars> %}
+For example: {% url 'stuff' 2012 %} or {% url 'polls:index' %}
+````
+
+The app_name variable or the following method can be used for namespacing
+
+````
+polls_patterns = ([
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+], 'polls')
+````
+
+URL examples
+
+````
+from django.conf.urls import url, include
 
 from . import views
 
+# additional urls that can be added
+extra_patterns = [
+    url(r'^stuff/$', stuff_views.stuff),
+]
+
+# url examples
+app_name = 'polls'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='details'),
+    url('^stuff/', include(extra_patterns)),
+    url(r'^articles/([0-9]{4})/$', views.article, name='stuff'), # capture values by surrounding in parentheses
+    url(r'^articles/(?P<year>[0-9]{$4})/$', views.article, name='stuff'), # same as the above expression but with a named group
+    url(r'contract/', include('django_website.contact.urls')),
+    url(r'comments/(?:page-(?P<page_number>\d+)/)?$', comments), # returns page_number=2
+]
+
+# used for simplifing urls with the same base url
+urlpatterns = [
+    url(r'^(?P<page_slug>[w\-]+)-(?P<page_id>\w+)/, include([
+        url(r'^history/$', views.history),
+        url(r'^edit/$', views.edit),
+        url(r'^discuss/$', views.discuss),
+    ]))
 ]
 ````
 
