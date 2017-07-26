@@ -254,6 +254,37 @@ def DetailView(generic.DetailView):
 <a href="{{ object.get_absolute_url }}">{{ object.name }}</a>
 ````
 
+### templates
+
+````
+django.contrib.humanize
+````
+
+````
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ section.title }}
+{% endblock %}
+
+{% block story %}
+    {% for story in story_list %}
+        {% story.headline|upper %}
+    {% endfor %}
+{% endblock %}
+````
+
+* an empty string is used if a variable is not found {{ var.attr }}
+* filers = |var. for example {{ bio|truncatewords:30 }}{{ value|default:"nothing" }}
+* others can be [found here](https://docs.djangoproject.com/en/1.11/ref/templates/builtins/#ref-templates-builtins-filters)
+
+command | description
+--- | ---
+intcomma | adds commas to numbers
+naturalday | yesterday, today, tomorrow for dates
+naturaltime | takes string and returns how long ago it happened
+ordinal | 1st, 2nd, 3rd from ints
+
 ## Project folder
 
 ### urls.py
