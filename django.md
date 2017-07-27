@@ -256,12 +256,14 @@ def DetailView(generic.DetailView):
 
 ### templates
 
+* It's generally good to have a base.html > base_SECTION.html > section.html template system
+
 ````
 django.contrib.humanize
 ````
 
 ````
-{% extends 'base.html' %}
+{% extends 'base.html' %} # must be first line of doc
 
 {% block title %}
     {{ section.title }}
@@ -272,6 +274,16 @@ django.contrib.humanize
         {% story.headline|upper %}
     {% endfor %}
 {% endblock %}
+
+{# some comment #}
+
+{{ MODEL.FOREIGNKEY_set.all.count }}
+
+{% if athlete_list|length > 1 %}
+   Team: {% for athlete in athlete_list %} ... {% endfor %}
+{% else %}
+   Athlete: {{ athlete_list.0.name }}
+{% endif %}
 ````
 
 * an empty string is used if a variable is not found {{ var.attr }}
