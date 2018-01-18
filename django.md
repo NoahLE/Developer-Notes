@@ -137,6 +137,10 @@ class ClassName(models.Model):
         <target_model>,
         through='Intermediate table', # can make your own if you would like to add extra data
         )
+    #extending the user model
+    from django.contrib.auth.models import User
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
 
     class Meta:
         ordering = ['-var']
