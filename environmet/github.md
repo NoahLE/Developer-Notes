@@ -2,18 +2,18 @@
 
 1. If you would like to use an existing key, check the .ssh directory (skip step 2 if this is the case)
 
-```
+```bash
 ls -al ~/.ssh
 ```
 
 2. Generate a new ssh key
 
-```
+```bash
 # -t = type, -b = bits, -C = comment
 ssh-keygen -t rsa -b 4096 -C "your_email@email.com"
 ```
 
-```
+```bash
 # The prompt should look something like this:
 $ ssh-keygen -p
 Enter file in which the key is (/Users/you/.ssh/id_rsa): <PRESS_ENTER> or <FILE_LOCATION>/<FILE_NAME>
@@ -26,7 +26,7 @@ Your public key has been saved in <FILE_LOCATIONS>
 
 3. If using Windows, set up auto-launching for the SSH-Agent
 
-```
+```bash
 # If you are using Windows, add the following script to your ~/.bashrc, ~/.profile, or other terminal settings file
 
 env=~/.ssh/agent.env
