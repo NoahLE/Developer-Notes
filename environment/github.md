@@ -1,4 +1,4 @@
-# Setting up for using Github
+# Creating and adding an SSH to Github
 
 1. If you would like to use an existing key, check the .ssh directory (skip step 2 if this is the case)
 
