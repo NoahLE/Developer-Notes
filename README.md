@@ -1,6 +1,6 @@
 # Programming notes
 
-A disorganized set of programming notes
+A work-in-progress set of programming notes.
 
 ## Sections
 
