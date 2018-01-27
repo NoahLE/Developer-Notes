@@ -2,12 +2,14 @@
 
 ## Pages
 
-- Accounts
-- File Auditing
-- Firewall
-- Isolating execution environments
-- Service pruning
-- SSH
+- [Accounts](server/accounts)
+- [fail2ban](server/fail2ban)
+- [File Auditing](server/file-auditing)
+- [Firewall](server/firewall)
+- [Isolating execution environments](server/isolating-enviroments)
+- [Service pruning](server/services)
+- [SSH](server/ssh)
+- [Tripwire](server/tripwire)
 
 ## Sources
 
