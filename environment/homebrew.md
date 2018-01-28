@@ -19,3 +19,11 @@ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB8
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
+## Learning about packages
+
+1. To learn more about a package, run the info command
+
+```bash
+brew info <PACKAGE_NAME>
+```
