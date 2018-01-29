@@ -1,5 +1,6 @@
 # ZSH
 
+My `.zshrc` file. See the [bashrc](environemt/bashrc) page for more terminal settings.
 
 ## Installation
 

@@ -10,7 +10,7 @@
 - [SourceTree]() - A visual Git tool
 - [VirtualBox]() - A VM image management system
 
-## Utilities
+## Utility applications
 
 - [Alfred]() - A super-changed spotlight replacement
 - [Caffine]() - Prevents the screen from turning off

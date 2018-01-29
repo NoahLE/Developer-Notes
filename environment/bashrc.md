@@ -4,6 +4,8 @@
 I use the ZSH shell which uses a .zshrc file instead of .bashrc to store settings. 
 A lot of these commands should be usable in whatever shell you use.
 
+See the [zshrc](enviroment/zshrc) page for more settings.
+
 ## General Configuration
 
 These are some general bash settings I found helpful.
