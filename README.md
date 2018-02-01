@@ -13,3 +13,5 @@ These notes are geared towards an OSX / Ubuntu development environment using for
     - [Django]() - Django language and setup notes
 - [Server]() - Server setup and security
     - [Security]() - Notes for securing a Linux web server
+- [Traveling]() - Tips and tricks while traveling
+- [Transportation]() - Anything transportation related
