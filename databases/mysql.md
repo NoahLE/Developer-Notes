@@ -34,3 +34,17 @@ use <DATABASE_NAME>;
 ```bash
 show tables;
 ```
+
+- Show information about the connection such as the version, current user, current database, etc.
+
+```bash
+status;
+```
+
+- Show the column headers for all tables
+
+```sql
+select * from information_schema.columns
+where table_schema = 'your_db'
+order by table_name,ordinal_position
+```
