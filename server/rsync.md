@@ -12,14 +12,19 @@ Always use rsync over SSH.
 - -e = ssh options
 - -z = compress data files
 
+
+### Copy file from local computer to remote server
+
 ```bash
-# Copy file from local computer to remote server
 # Example rsync -ve ssh ~/file.tar user@server.com:~
 rsync -v -e <FILE> <SSH_USERNAME>@<SERVER_INFO>:<FILE LOCATION>
+```
+### Copy file from remote server to local computer
 
-# Copy file from remote server to local computer
+```bash
 # Example: rsync -ve ssh user@server.com:~/file.txt /tmp
 rsync -v -e ssh <SSH_USERNAME>@<SERVER_INFO>:<FILE_LOCATION> <LOCAL_LOCATION>
+```
 
 ## Sources
 
