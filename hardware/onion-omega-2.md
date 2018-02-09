@@ -17,4 +17,5 @@ etc/init.d/rpcd restart
 
 ## Sources
 
+-[First time setup](https://docs.onion.io/omega2-docs/first-time-setup.html)
 - [Installing the console](https://community.onion.io/topic/1416/resolved-restoring-after-a-factory-reset)
