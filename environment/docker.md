@@ -25,3 +25,9 @@ docker exec -it <CONTAINER_ID_OR_NAME> <COMMAND>
 ```bash
 docker system prune
 ```
+
+- Rebuild a Docker container
+
+```bash
+docker build --no-cache .
+``` 
