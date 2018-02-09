@@ -1,6 +1,15 @@
 # Accounts
 
-# Disable the password for Root login
+## Changing password
+
+- To change passwords use the `passwd` command
+
+```bash
+# You will be prompted to enter the current password and reenter the new password twice
+sudo passwd <USERNAME>
+```
+
+## Disable the password for Root login
 
 ```bash
 sudo nano /etc/ssh/sshd_config

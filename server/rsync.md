@@ -20,3 +20,7 @@ rsync -v -e <FILE> <SSH_USERNAME>@<SERVER_INFO>:<FILE LOCATION>
 # Copy file from remote server to local computer
 # Example: rsync -ve ssh user@server.com:~/file.txt /tmp
 rsync -v -e ssh <SSH_USERNAME>@<SERVER_INFO>:<FILE_LOCATION> <LOCAL_LOCATION>
+
+## Sources
+
+- [How to use rsync](https://www.cyberciti.biz/tips/linux-use-rsync-transfer-mirror-files-directories.html)

@@ -56,3 +56,17 @@ docker save -o <BACKUP_NAME>.tar <BACKUP_NAME>
 4. Copy off the backup using `rsync` or `scp`. It is also possible to use something like [docker backup](https://hub.docker.com/r/boombatower/docker-backup/)
 
 See [the rsync page](server/rsync) for more information
+
+## How to restore a container
+
+1. Load the image if it's not already on the server using the `load` command.
+
+```bash
+docker load -i <BACKUP_NAME>.tar
+```
+
+2.
+
+## Sources
+
+- [Docker - Easy backup and restore](https://bobcares.com/blog/docker-backup/2/)
