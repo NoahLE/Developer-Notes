@@ -24,3 +24,7 @@ PermitRootLogin without-password
 # Restart the service
 sudo systemctl reload sshd.service
 ```
+
+## Sources 
+
+- [Changing user passwords](https://www.tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
