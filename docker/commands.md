@@ -34,4 +34,72 @@ docker system prune
 
 ```bash
 docker build --no-cache .
-``` 
+```
+
+- Build a container with a tag name
+
+```bash
+docker build -t <IMAGE_NAME>
+```
+
+- Change the port a Container is accessible from
+
+```bash
+docker run -p <PORT_YOU_WILL_ACCESS:CONTAINER_PORT> <IMAGE_TAG>
+```
+
+- Start and stop a container in the background (detached mode)
+
+```bash
+# Start
+docker run -d <CONTAINER_NAME>
+
+# Stop
+docker container stop <CONTAINER_ID>
+```
+
+- Login to Docker Cloud
+
+```bash
+docker login
+```
+
+- Add tag to image
+
+```bash
+# Tag is used for versioning the images
+docker tag <IMAGE_NAME> <USERNAME>/<REPOSITORY>:<TAG>
+```
+
+- Push image to Docker Cloud
+
+```bash
+docker push <USERNAME>/<REPOSITORY>:<TAG>
+```
+
+- Run image from Docker Cloud
+
+```bash
+docker run <USERNAME>/<REPOSITORY>:<TAG>
+```
+
+## Cheatsheet (TODO: Integrate with current commands)
+
+```bash
+docker build -t friendlyhello .  # Create image using this directory's Dockerfile
+docker run -p 4000:80 friendlyhello  # Run "friendlyname" mapping port 4000 to 80
+docker run -d -p 4000:80 friendlyhello         # Same thing, but in detached mode
+docker container ls                                # List all running containers
+docker container ls -a             # List all containers, even those not running
+docker container stop <hash>           # Gracefully stop the specified container
+docker container kill <hash>         # Force shutdown of the specified container
+docker container rm <hash>        # Remove specified container from this machine
+docker container rm $(docker container ls -a -q)         # Remove all containers
+docker image ls -a                             # List all images on this machine
+docker image rm <image id>            # Remove specified image from this machine
+docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker login             # Log in this CLI session using your Docker credentials
+docker tag <image> username/repository:tag  # Tag <image> for upload to registry
+docker push username/repository:tag            # Upload tagged image to registry
+docker run username/repository:tag                   # Run image from a registry
+```
