@@ -1,5 +1,11 @@
 # Docker Commands
 
+- Current Docker status
+
+```bash
+docker info
+```
+
 - Build the Docker environment
 
 ```bash
