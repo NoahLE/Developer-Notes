@@ -83,7 +83,29 @@ docker push <USERNAME>/<REPOSITORY>:<TAG>
 docker run <USERNAME>/<REPOSITORY>:<TAG>
 ```
 
-## Cheatsheet (TODO: Integrate with current commands)
+- Starting and stopping the Docker Swarm
+
+```bash
+# Start the swarm
+docker swarm init
+
+# Deploy to the swarm
+docker stack deploy -c docker-compose.yml <APP_NAME>
+
+# Stop the swarm
+docker swarm leave --force
+
+# Remove the stack from swarm
+docker stack rm <APP_NAME>
+```
+
+- Show running services
+
+```bash
+docker service ls
+```
+
+## Cheatsheet - Part 2
 
 ```bash
 docker build -t friendlyhello .  # Create image using this directory's Dockerfile
@@ -102,4 +124,17 @@ docker login             # Log in this CLI session using your Docker credentials
 docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
+```
+
+## Cheatsheet - Part 3
+
+```bash
+docker stack ls                                            # List stacks or apps
+docker stack deploy -c <composefile> <appname>  # Run the specified Compose file
+docker service ls                 # List running services associated with an app
+docker service ps <service>                  # List tasks associated with an app
+docker inspect <task or container>                   # Inspect task or container
+docker container ls -q                                      # List container IDs
+docker stack rm <appname>                             # Tear down an application
+docker swarm leave --force      # Take down a single node swarm from the manager
 ```
