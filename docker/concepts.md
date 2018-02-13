@@ -12,6 +12,7 @@ The Docker setup looks like the following: Stack -> Services -> Containers
 - Swarm node - Each machine in the swarm is referred to as a node
 - Swarm manager - The way commands and load balancing is run in the swarm on all nodes
 - Workers - Unlike swarm managers, workers are just there to provide capacity, they cannot control other nodes
+- Stack - A group of interrelated services that share dependencies, and can be scaled and orchestrated together
 
 ## Files
 
