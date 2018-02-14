@@ -1,5 +1,9 @@
 # Accounts
 
+## Access the root account if it does not have a password set
+
+If you would like to access the `root` account and it does not have a password set, you can access it by either using the `su root` command or `sudo -i`. If you would like to set the password, run the command `sudo passwd root`.
+
 ## Changing password
 
 - To change passwords use the `passwd` command
@@ -9,16 +13,24 @@
 sudo passwd <USERNAME>
 ```
 
-## Disable the password for Root login
+## Disable Root login
+
+1. Open `/etc/ssh/sshd_config` with your favorite text editor
 
 ```bash
-sudo nano /etc/ssh/sshd_config
+sudo vi /etc/ssh/sshd_config
 ```
 
+2. Change the following line:
+
 ```bash
-# Add the following to the file
-PermitRootLogin without-password
+# Add or edit the following to the file
+PermitRootLogin no
+# Alternatively, if you would like to allow root login, but not with a password set it to:
+# PermitRootLogin without-password
 ```
+
+3. Restart the service
 
 ```bash
 # Restart the service
@@ -51,3 +63,6 @@ sudo service ssh restart
 ## Sources
 
 - [Changing user passwords](https://www.tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
+- [Disabling password authentication](htptps://askubuntu.com/a/435620)
+- [PermitRootLogin explaination](https://askubuntu.com/questions/449364/what-does-without-password-mean-in-sshd-config-file#449372) or [PermitRootLogin setting](https://serverfault.com/a/178087)
+- [Setting the root password](https://askubuntu.com/a/364316)
