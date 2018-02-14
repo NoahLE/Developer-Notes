@@ -1,5 +1,9 @@
 # Ubuntu
 
+## Chaining commands
+
+You can chain commands together by using `&&`. For example: `sudo apt-get update && apt-get upgrade && apt-get dist-upgrade`.
+
 ## Useful commands
 
 - Fetch list of available packages
@@ -18,4 +22,10 @@ sudo apt-get upgrade
 
 ```bash
 sudo apt-get dist-upgrade
+```
+
+- Get network info
+
+```bash
+ifconfig
 ```
