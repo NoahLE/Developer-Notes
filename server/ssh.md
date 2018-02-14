@@ -80,3 +80,4 @@ Warning: Permanently added '<SERVER_IP>' (RSA) to the list of known hosts.
 
 - [Generating a ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
 - [Installing SSH in Ubuntu](https://askubuntu.com/a/51926)
+- [Hardening SSH](https://thepcspy.com/read/making-ssh-secure/)
