@@ -55,7 +55,7 @@ Host *
 2. Add the SSH key
 
 ```bash
-ssh-add -K ~/.ssh/<KEY_NAME>
+ssh-add ~/.ssh/<KEY_NAME>
 ```
 
 ## Sending the key to the server

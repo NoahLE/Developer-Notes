@@ -13,6 +13,8 @@ ls -al ~/.ssh
 ssh-keygen -t rsa -b 4096 -C "your_email@email.com"
 ```
 
+It should produce a prompt that looks like the following:
+
 ```bash
 # The prompt should look something like this:
 $ ssh-keygen -p
@@ -53,4 +55,4 @@ unset env
 
 ## Sources
 
-- https://help.github.com/articles/connecting-to-github-with-ssh/
+- [Connecting to Github](https://help.github.com/articles/connecting-to-github-with-ssh/)
