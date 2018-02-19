@@ -27,7 +27,7 @@ alias gitl='git log --oneline --decorate --all --graph'
 alias gitds='git diff --staged'
 
 # Other programming aliases
-alias ua='brew update && brew upgrade && brew cleanup && antigen update'
+alias ua='brew update && brew upgrade && brew cleanup && antigen update && npm update -g'
 alias pm='python manage.py'
 alias djangocookie='cookiecutter https://github.com/pydanny/cookiecutter-django'
 
