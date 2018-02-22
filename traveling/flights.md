@@ -2,7 +2,7 @@
 
 ## Tickets
 
-Purchasing tickets is usually best on a Wednesday around 11AM. More info on this in [this article]().
+Purchasing tickets is usually best on a Wednesday around 11AM. More info on this in [this article](https://www.nerdwallet.com/blog/finance/best-time-to-buy-plane-tickets/). Lately, I've found flying to be the cheapest on Thursdays, although I filter by flights leaving after 8am and arriving before 9pm. 
 
 ## Websites
 
