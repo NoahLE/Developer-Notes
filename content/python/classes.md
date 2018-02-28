@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Classes
-
 ## A sample class
 
 ```python

@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Fail2Ban
-
 Restart fail2ban if settings are changed.
 
 ## Install fail2ban

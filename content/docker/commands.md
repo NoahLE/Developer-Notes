@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Docker Commands
-
 - Current Docker status
 
 ```bash

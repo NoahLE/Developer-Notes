@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# JIRA Notes
-
 Iron triange - scope, schedule, quality
 
 We don't have the time, but have to make the time

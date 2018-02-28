@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Docker
-
 ## Installing Docker
 
 1. Install docker-ce (community edition)

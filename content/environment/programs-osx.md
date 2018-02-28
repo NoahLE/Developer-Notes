@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Recommended OSX Programs
-
 ## Reference and helper axpplications
 
 - [CheatSheet](https://www.cheatsheetapp.com/CheatSheet/) - Shows keyboard shortcuts based on the app you're using

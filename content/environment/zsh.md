@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# ZSH
-
 My `.zshrc` file. See the [bashrc](environemt/bashrc) page for more terminal settings.
 
 ## Installation

@@ -4,8 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-# Security related websites
-
 ## CTF
 
 - [Github CTF Writeups](https://github.com/ctfs/) - CTF writups

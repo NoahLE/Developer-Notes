@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Ubuntu
-
 ## Chaining commands
 
 You can chain commands together by using `&&`. For example: `sudo apt-get update && apt-get upgrade && apt-get dist-upgrade`.

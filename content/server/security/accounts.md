@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Accounts
-
 ## Access the root account if it does not have a password set
 
 If you would like to access the `root` account and it does not have a password set, you can access it by either using the `su root` command or `sudo -i`. If you would like to set the password, run the command `sudo passwd root`.

@@ -4,8 +4,7 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Node setup
+## Installation
 
 1. Install npm
 

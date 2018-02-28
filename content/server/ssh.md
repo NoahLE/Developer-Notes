@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# SSH Keys
-
 ## Installing SSH and allowing it through the firewall
 
 1. First update your repositories

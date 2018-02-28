@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Table of Contents - Server
-
 ## Pages
 
 - [Accounts](server/accounts)

@@ -1,11 +1,8 @@
 ---
-title: CMDer Notes
+title: Cmder Notes
 date: "2018-02-28"
 publish: true
 ---
-
-
-# Cmder
 
 ## Setting a default directory
 

@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# .bashrc File Configuration
-
 I use the ZSH shell which uses a .zshrc file instead of .bashrc to store settings. 
 A lot of these commands should be usable in whatever shell you use.
 

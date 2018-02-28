@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Django Notes
-
 https://docs.djangoproject.com/en/1.11/
 
 Abbreviation | Meaning

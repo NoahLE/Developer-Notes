@@ -1,11 +1,8 @@
 ---
-title: Homebrew Reference
+title: Homebrew Reference (OSX)
 date: "2018-02-28"
 publish: true
 ---
-
-
-# Homebrew (OSX)
 
 [Homebrew]() is an awesome package manager for OSX.
 

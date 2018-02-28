@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Onion Omega 2
-
 ## Console not showing up when connecting to the device
 
 Sometimes when you do a hard reset, the console does not show up when logging into the device. To fix this, you need to reinstall the onion console and reboot the device.

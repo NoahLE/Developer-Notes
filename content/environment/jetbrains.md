@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Jetbrains
-
 Jetbrains produces some incredible IDEs like Pycharm and Webstorm.
 
 ## Theming

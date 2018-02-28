@@ -4,8 +4,7 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Creating and adding an SSH key to Github
+## Creating and adding an SSH key to Github
 
 1. If you would like to use an existing key, check the .ssh directory (skip step 2 if this is the case)
 

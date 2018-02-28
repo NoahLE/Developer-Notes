@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Recommended Windows programs
-
 ## Utility applications
 
 - [Greenshot](http://getgreenshot.org/) - A super-charged screenshot application

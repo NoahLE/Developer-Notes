@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Concepts
-
 The Docker setup looks like the following: Stack -> Services -> Containers
 
 ## Meta

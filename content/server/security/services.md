@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Service Auditing
-
 ```bash
 # An example of viewing services listening on ports would be 
 sudo netstat -plunt

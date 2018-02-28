@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Purchasing a Car
-
 ## Estimating the car's value
 
 - [Kelly Blue Book]() - An excellent website for finding a car's value. I recommend looking at the Cost-To-Own tool as well

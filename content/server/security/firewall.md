@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# Firewall (using UFW)
-
 - Stands for Uncomplicated Firewall
 - It's a front-end to iptables
 
