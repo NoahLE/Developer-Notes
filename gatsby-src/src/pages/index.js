@@ -35,7 +35,10 @@ export default ({ data }) => {
 
 export const query = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { publish: { eq: true } } }
+    ) {
       totalCount
       edges {
         node {
@@ -43,6 +46,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            publish
           }
           fields {
             slug
