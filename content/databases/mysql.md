@@ -4,9 +4,6 @@ date: "2018-02-28"
 publish: true
 ---
 
-
-# MySQL Notes
-
 ## Logging in
 
 1. `ssh` into the server with the MySQL database or use a program like `DataGrip`
