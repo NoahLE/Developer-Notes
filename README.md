@@ -15,3 +15,9 @@ These notes are geared towards an OSX / Ubuntu development environment using for
     - [Security]() - Notes for securing a Linux web server
 - [Traveling]() - Tips and tricks while traveling
 - [Transportation]() - Anything transportation related
+
+## Installing Gatsby
+
+## Running the project
+
+`gatsby develop`
