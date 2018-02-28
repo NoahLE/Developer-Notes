@@ -4,6 +4,7 @@ module.exports = {
     },
     plugins: [
         `gatsby-plugin-glamor`,
+        `gatsby-transformer-remark`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
