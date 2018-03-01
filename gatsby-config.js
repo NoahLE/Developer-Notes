@@ -6,6 +6,12 @@ module.exports = {
         `gatsby-plugin-glamor`,
         `gatsby-transformer-remark`,
         {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+                classPrefix: "language-",
+            },
+        },
+        {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `content`,

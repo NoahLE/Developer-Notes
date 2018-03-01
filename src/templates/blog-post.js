@@ -1,5 +1,7 @@
 import React from "react";
 
+require("prismjs/themes/prism-solarizedlight.css");
+
 export default ({ data }) => {
     const post = data.markdownRemark;
     console.log(post);
