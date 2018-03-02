@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import g from "glamorous";
 import { css } from "glamor";
