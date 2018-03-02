@@ -8,10 +8,10 @@ export default ({ data }) => {
   return (
     <div>
       <g.H1 display={"inline-block"} borderBottom={"1px solid"}>
-        All Notes
+        Table of Contents
       </g.H1>
       <h4>
-        {data.allMarkdownRemark.totalCount} Posts
+        {data.allMarkdownRemark.totalCount} pages of notes (so far).
       </h4>
       {data.allMarkdownRemark.edges.map(({ node }) =>
         <div key={node.id}>
@@ -21,11 +21,11 @@ export default ({ data }) => {
           >
             <g.H3 marginBottom={rhythm(1 / 4)}>
               {node.frontmatter.title}{" "}
-              <g.Span color="#BBB">— {node.frontmatter.date}</g.Span>
+              {/* <g.Span color="#BBB">— {node.frontmatter.date}</g.Span> */}
             </g.H3>
-            <p>
-              {node.excerpt}
-            </p>
+            {/* <p> */}
+              {/* {node.excerpt} */}
+            {/* </p> */}
           </Link>
         </div>
       )}
@@ -36,7 +36,7 @@ export default ({ data }) => {
 export const query = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___title], order: ASC }
       filter: { frontmatter: { publish: { eq: true } } }
     ) {
       totalCount
