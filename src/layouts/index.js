@@ -21,11 +21,11 @@ export default ({ children, data }) => (
                 fontStyle={`normal`}
             >
                 {data.site.siteMetadata.title}
-      </g.H3>
+            </g.H3>
         </Link>
         <Link className={linkStyle} to={`/about/`}>
             About
-    </Link>
+        </Link>
         {children()}
     </g.Div>
 );
