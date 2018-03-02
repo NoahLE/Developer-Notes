@@ -1,6 +1,8 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const _ = require(`lodash`);
+
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
     const { createNodeField } = boundActionCreators
     if (node.internal.type === `MarkdownRemark`) {
@@ -43,3 +45,28 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             })
     })
 };
+
+// exports.sourceNodes = ({ getNodes, boundActionCreators }) => {
+//     const { createNodeField } = boundActionCreators;
+//     const pageNodes = getNodes().filter(
+//         node => node.internal.type === "MarkdownRemark"
+//     );
+
+//     pageNodes.forEach(pageNode => {
+//         let pathFragments = [];
+//         let tmpNode = pageNode;
+//         do {
+//             pathFragments.push(tmpNode.slug);
+//             tmpNode = pageNodes.find(
+//                 node => node.id === tmpNode.parent
+//             );
+//         } while (tmpNode);
+
+//         const path = pathFragments.reverse().join("/");
+//         createNodeField({
+//             node: pageNode,
+//             name: `path`,
+//             value: path,
+//         });
+//     });
+// };

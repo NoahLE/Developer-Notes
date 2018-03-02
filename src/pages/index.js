@@ -8,7 +8,7 @@ export default ({ data }) => {
   return (
     <div>
       <g.H1 display={"inline-block"} borderBottom={"1px solid"}>
-        Amazing Pandas Eating Things
+        All Notes
       </g.H1>
       <h4>
         {data.allMarkdownRemark.totalCount} Posts

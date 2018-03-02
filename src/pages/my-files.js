@@ -8,10 +8,10 @@ export default ({ data }) => {
             <table>
                 <thead>
                     <tr>
-                        <th>relativePath</th>
-                        <th>prettySize</th>
-                        <th>extension</th>
-                        <th>birthTime</th>
+                        <th>Location</th>
+                        <th>File Size</th>
+                        <th>File Type</th>
+                        <th>Last Updated</th>
                     </tr>
                 </thead>
                 <tbody>
