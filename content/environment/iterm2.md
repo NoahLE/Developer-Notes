@@ -6,7 +6,7 @@ publish: true
 
 ## Shells
 
-* Check out [zsh](zsh.md)
+* Check out [zsh](zsh.md), I love using this 
 
 * [Hyper.io](https://hyper.is/) is another option that some people have recommended
 
