@@ -22,6 +22,12 @@ docker-compose up
 docker ps -a
 ```
 
+- List all Docker containers without truncating the results
+
+```bash
+docker ps -a --no-trunc
+```
+
 - List all running Docker containers in the swarm
 
 ```bash
