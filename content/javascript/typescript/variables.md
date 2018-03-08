@@ -1,5 +1,5 @@
 ---
-title: TypeScript Notes
+title: TypeScript - Variables
 date: "2018-03-05"
 publish: true
 ---
