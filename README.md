@@ -1,23 +1,43 @@
 # Programming notes
 
-A work-in-progress set of programming notes.
-These notes are geared towards an OSX / Ubuntu development environment using for Python / JavaScript for web development.
+This is a set of notes to help me quickly reference things I find useful. I hope it helps out other developers as well!
 
-## Sections
+## Table of Contents
 
-- [Development Environment]() - General enviroment setup notes and caveats
-- [JavaScript]() - JavaScript language and setup notes
-- [Stretches]() - Stretches to offset sitting infront of a computer
-- [Project management]() - Project management, organization, and workflows
-- [Python]() - Python notes
-    - [Django]() - Django language and setup notes
-- [Server]() - Server setup and security
-    - [Security]() - Notes for securing a Linux web server
-- [Traveling]() - Tips and tricks while traveling
-- [Transportation]() - Anything transportation related
+Table of Contents will be published soon!
 
-## Installing Gatsby
+## Installation
 
-## Running the project
+1. Install Node.js [from here](https://nodejs.org/en/) (the current version is fine)
 
-`gatsby develop`
+2. Install the GatsbyJS CLI by running the following command in your shell `npm install --global gatsby-cli`
+
+3. Clone the repository to your location of choice `git clone git@github.com:NoahLE/Developer-Notes.git` (feel free to fork as well)
+
+4. CD into the project's root directory and run `gatsby develop` to start testing! You should be able to access the website at `localhost:8000` in your browser
+
+## Commands
+
+* `gatsby develop` — Gatsby will start a hot-reloading development environment accessible at localhost:8000
+* `gatsby build` — Gatsby will perform an optimized production build for your site generating static HTML and per-route JavaScript code bundles.
+* `gatsby serve` — Gatsby starts a local HTML server for testing your built site.
+
+## Project Structure
+
+### Content Folder
+
+The content for all the pages is located in the `content` folder. I tried to set up a structure of `main category` -> `sub-category` (if needed) -> `page`. Ideally the depth of pages won't be more than three levels deep.
+
+### SRC Folder
+
+These components are written in React and control the structure and appearance of the website.
+
+* `layouts` - The skeleton layout of the website
+* `pages` - Controls the structure of each page
+* `templates` - Has the layout for each post
+* `utils` - Has the formatting options, such as the font
+
+### Project Root
+
+* `gatsby-config.js` - Controls Gatsby's plugins
+* `gatsby-node.js` - Controls page creation
