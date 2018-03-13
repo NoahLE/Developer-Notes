@@ -8,7 +8,7 @@ Table of Contents will be published soon!
 
 ## Installation
 
-1. Install Node.js [from here](https://nodejs.org/en/) (the current version is fine)
+1. Install Node.js [from here](https://nodejs.org/en/) (the current version is fine - 9.8.0 as of 3-12-2018)
 
 2. Install the GatsbyJS CLI by running the following command in your shell `npm install --global gatsby-cli`
 
@@ -23,6 +23,8 @@ Table of Contents will be published soon!
 * `gatsby serve` — Gatsby starts a local HTML server for testing your built site.
 
 ## Project Structure
+
+Here is a quick breakdown of this project's structure.
 
 ### Content Folder
 

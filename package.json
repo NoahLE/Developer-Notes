@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-starter-hello-world",
-  "description": "Gatsby hello world starter",
+  "name": "noahle-programming-notes",
+  "description": "A set of development and development-related notes I've build for quick reference.",
   "license": "MIT",
   "scripts": {
     "develop": "gatsby develop",
