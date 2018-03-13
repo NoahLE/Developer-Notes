@@ -41,3 +41,7 @@ These components are written in React and control the structure and appearance o
 
 * `gatsby-config.js` - Controls Gatsby's plugins
 * `gatsby-node.js` - Controls page creation
+
+## Useful Links
+
+* [Gatsby Documentation](https://www.gatsbyjs.org/docs/)
