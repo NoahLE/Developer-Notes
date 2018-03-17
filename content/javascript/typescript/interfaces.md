@@ -2,6 +2,7 @@
 title: TypeScript - Interfaces
 date: "2018-03-13"
 publish: true
+tags: ["javascript", "typescript"]
 ---
 
 AKA `Duck typing` or `structural subtyping` focuses on the "shape" values have.

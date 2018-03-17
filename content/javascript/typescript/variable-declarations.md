@@ -2,6 +2,7 @@
 title: TypeScript - Variable Declarations
 date: "2018-03-08"
 publish: true
+tags: ["javascript", "typescript"]
 ---
 
 ## Variable Declarations

@@ -2,6 +2,7 @@
 title: Virtual Environment Reference
 date: "2018-02-28"
 publish: true
+tags: ["python"]
 ---
 
 Managing application versions between projects can be extremely frusterating. Thankfully, some developers have come up with a way of isolating each project to a specific set of application versions.

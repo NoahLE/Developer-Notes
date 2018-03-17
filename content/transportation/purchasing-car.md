@@ -2,6 +2,7 @@
 title: Purchasing car
 date: "2018-02-28"
 publish: true
+tags: ["life"]
 ---
 
 ## Estimating the car's value

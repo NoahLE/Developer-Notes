@@ -2,6 +2,7 @@
 title: Python Classes
 date: "2018-02-28"
 publish: true
+tags: ["python"]
 ---
 
 ## A sample class

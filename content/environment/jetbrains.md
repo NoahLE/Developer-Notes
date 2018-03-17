@@ -2,6 +2,7 @@
 title: Jetbrains Notes
 date: "2018-02-28"
 publish: true
+tags: ["environment", "editors"]
 ---
 
 Jetbrains produces some incredible IDEs like Pycharm and Webstorm.

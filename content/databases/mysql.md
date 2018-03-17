@@ -2,6 +2,7 @@
 title: MySQL Reference
 date: "2018-02-28"
 publish: true
+tags: ["databases", "mysql"]
 ---
 
 ## Logging in

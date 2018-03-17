@@ -2,6 +2,7 @@
 title: Homebrew Reference (OSX)
 date: "2018-02-28"
 publish: true
+tags: ["environment"]
 ---
 
 [Homebrew]() is an awesome package manager for OSX.

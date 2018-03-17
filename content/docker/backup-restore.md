@@ -2,6 +2,7 @@
 title: Docker Backup & Restoration
 date: "2018-02-28"
 publish: true
+tags: ["docker"]
 ---
 
 **Note**: Backups do NOT save the data in the container. If you would like to keep the data too, please check out the section on Docker data volumes below.

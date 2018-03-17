@@ -2,6 +2,7 @@
 title: OSX Programs
 date: "2018-02-28"
 publish: true
+tags: ["environment"]
 ---
 
 ## Reference and helper axpplications

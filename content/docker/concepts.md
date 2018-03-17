@@ -2,6 +2,7 @@
 title: Docker Concepts
 date: "2018-02-28"
 publish: true
+tags: ["docker"]
 ---
 
 The Docker setup looks like the following: Stack -> Services -> Containers

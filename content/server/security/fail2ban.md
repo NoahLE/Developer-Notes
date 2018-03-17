@@ -2,6 +2,7 @@
 title: Fail2Ban Reference
 date: "2018-02-28"
 publish: true
+tags: ["server", "security"]
 ---
 
 Restart fail2ban if settings are changed.

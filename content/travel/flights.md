@@ -2,6 +2,7 @@
 title: Flight Information
 date: "2018-02-28"
 publish: true
+tags: ["travel", "flights"]
 ---
 
 ## Tickets

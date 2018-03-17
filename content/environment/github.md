@@ -2,6 +2,7 @@
 title: Github Reference
 date: "2018-02-28"
 publish: true
+tags: ["environment", "git"]
 ---
 
 ## Creating and adding an SSH key to Github

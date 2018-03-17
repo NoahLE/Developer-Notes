@@ -2,6 +2,7 @@
 title: ZSH Reference (shell replacement)
 date: "2018-02-28"
 publish: true
+tags: ["environment", "shell"]
 ---
 
 My `.zshrc` file. See the [bashrc](environemt/bashrc) page for more terminal settings.

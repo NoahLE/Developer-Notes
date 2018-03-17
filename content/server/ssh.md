@@ -2,6 +2,7 @@
 title: SSH Reference
 date: "2018-02-28"
 publish: true
+tags: ["server"]
 ---
 
 ## Installing SSH and allowing it through the firewall

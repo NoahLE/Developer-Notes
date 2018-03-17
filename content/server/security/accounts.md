@@ -2,6 +2,7 @@
 title: User account reference
 date: "2018-02-28"
 publish: true
+tags: ["server", "security"]
 ---
 
 ## Access the root account if it does not have a password set

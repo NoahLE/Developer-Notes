@@ -2,6 +2,7 @@
 title: Docker Commands
 date: "2018-02-28"
 publish: true
+tags: ["docker"]
 ---
 
 - Current Docker status

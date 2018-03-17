@@ -2,6 +2,7 @@
 title: Ubuntu reference
 date: "2018-02-28"
 publish: true
+tags: ["operating systems", "security"]
 ---
 
 ## Chaining commands

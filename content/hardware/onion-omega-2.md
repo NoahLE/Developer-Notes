@@ -2,6 +2,7 @@
 title: Onion Omega 2 Notes
 date: "2018-02-28"
 publish: true
+tags: ["hardware", "onion-omega-2"]
 ---
 
 ## Console not showing up when connecting to the device

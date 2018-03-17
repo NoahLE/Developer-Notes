@@ -2,6 +2,7 @@
 title: .bashrc Configuration
 date: "2018-02-28"
 publish: true
+tags: ["environment", "shell"]
 ---
 
 I use the ZSH shell which uses a .zshrc file instead of .bashrc to store settings. 

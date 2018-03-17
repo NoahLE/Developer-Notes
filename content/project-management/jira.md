@@ -2,6 +2,7 @@
 title: JIRA Notes
 date: "2018-02-28"
 publish: true
+tags: ["project-management", "atlassian", "jira"]
 ---
 
 Iron triange - scope, schedule, quality

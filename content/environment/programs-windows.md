@@ -2,6 +2,7 @@
 title: Windows Programs
 date: "2018-02-28"
 publish: true
+tags: ["environment"]
 ---
 
 ## Utility applications

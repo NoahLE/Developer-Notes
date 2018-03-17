@@ -2,6 +2,7 @@
 title: iTerm2 Notes
 date: "2018-03-06"
 publish: true
+tags: ["environment", "shell"]
 ---
 
 ## Shells

@@ -2,6 +2,7 @@
 title: Tripwire Reference
 date: "2018-02-28"
 publish: true
+tags: ["server", "security"]
 ---
 
 ## Sources

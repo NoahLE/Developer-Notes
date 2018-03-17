@@ -2,6 +2,7 @@
 title: Django Notes
 date: "2018-02-28"
 publish: true
+tags: ["python", "django"]
 ---
 
 https://docs.djangoproject.com/en/1.11/

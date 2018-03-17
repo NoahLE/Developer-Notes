@@ -2,6 +2,7 @@
 title: Ubuntu Firewall Reference (UFW)
 date: "2018-02-28"
 publish: true
+tags: ["server", "security"]
 ---
 
 - Stands for Uncomplicated Firewall

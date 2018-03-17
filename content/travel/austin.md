@@ -2,6 +2,7 @@
 title: Austin, TX
 date: "2018-03-05"
 publish: true
+tags: ["travel", "cities"]
 ---
 
 ## Places to Go

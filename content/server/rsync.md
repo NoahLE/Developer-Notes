@@ -2,6 +2,7 @@
 title: rsync Reference
 date: "2018-02-28"
 publish: true
+tags: ["server"]
 ---
 
 ## Installing rsync

@@ -2,6 +2,7 @@
 title: Installing Python
 date: "2018-02-28"
 publish: true
+tags: ["python"]
 ---
 
 ## OSX
