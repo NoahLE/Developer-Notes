@@ -1,6 +1,6 @@
 ---
 title: Project Process Workflow
-date: "2018-03-13"
+date: "2018-04-17"
 publish: false
 ---
 
@@ -90,8 +90,9 @@ publish: false
 
 # Engineering
 
-1. No changes by the client will be allowed past this point
-2. Research language and frameworks to build the application while considering:
+No changes by the client will be allowed past this point
+
+1. Research language and frameworks to build the application while considering:
     1. Security
     2. Platform and browser compatibility
     3. Data structuring
@@ -104,15 +105,16 @@ publish: false
 
 # Construction
 
-1. Get final write-off, no design changes will be accepted past this point
-2. Divide and conquer - break the segments of the project into as detailed items as possible
-3. All requirements will be documented as a ticket or task
-4. Any changes to tickets must be reviewed and approved by the development team and project manager
-5. All features will be developed in independant branches
-6. Every commit will increase code coverage
-7. All submissions must pass continuous integration
-8. All code must be kept in version control and uploaded to an off-site system
-9. User and developer documentation should grow with the project and should cover the following items:
+Get final write-off, no design changes will be accepted past this point
+
+1. Divide and conquer - break the segments of the project into as detailed items as possible
+2. All requirements will be documented as a ticket or task
+3. Any changes to tickets must be reviewed and approved by the development team and project manager
+4. All features will be developed in independant branches
+5. Every commit will increase code coverage
+6. All submissions must pass continuous integration
+7. All code must be kept in version control and uploaded to an off-site system
+8. User and developer documentation should grow with the project and should cover the following items:
     1. Installation of the required dependencies as well as the languages and other technologies required to run the project
     2. Environment configuration
     3. Keys
@@ -123,13 +125,13 @@ publish: false
     8. Database mapping and relations
     9. In-code comments
     10. Testing / Debugging
-10. Get product approval, no development aside from bug fixing and final release changes will be accepted past this point
-11. Internal QA process
-12. Max out code coverage
-13. Deliver to client for initial audit
-14. Deployment to staging servers
-15. Deploy to live servers
-16. Finalize documentation
+9. Get product approval, no development aside from bug fixing and final release changes will be accepted past this point
+10. Internal QA process
+11. Max out code coverage
+12. Deliver to client for initial audit
+13. Deployment to staging servers
+14. Deploy to live servers
+15. Finalize documentation
 
 # Delivery
 
