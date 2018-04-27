@@ -15,11 +15,11 @@ tags: ["travel", "cities"]
 
 - Highway 360 South
 
-- Tatiyana Thai
+- Tatiyana Thai Cuisine
 
 - Snoos
 
-- Franklin's BBQ
+- Franklin's BBQ (get in line ~2 hours early at opening)
 
 - Rudy's BBQ
 
@@ -30,3 +30,11 @@ tags: ["travel", "cities"]
 - the green belt / sculpture falls / zilker park
 
 - Castle hill
+
+- Bone Daddy's
+
+- Din Ho
+
+- Pluckers
+
+- Quality Seafood
