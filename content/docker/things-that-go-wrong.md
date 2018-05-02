@@ -8,6 +8,10 @@ publish: true
 
 I find completely shutting down Docker and loading it back up fixes this problem. Sometimes a computer restart may be required.
 
+* Error code 126
+
+Double check the file permissions. Depending on what the file does, it may need execution rights (`chmod +x FILE`)
+
 * Error code 127
 
 Check the drive permissions by right clicking Docker > Settings > Shared Drives > Reset Credentials > Apply > Recheck the drive > Apply.
