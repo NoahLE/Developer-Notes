@@ -81,6 +81,18 @@ Warning: Permanently added '<SERVER_IP>' (RSA) to the list of known hosts.
 <USER>@<SERVER_IP>'s password: <PASSWORD> 
 ```
 
+## Debugging SSH
+
+Somethings that could wrong is the ssh-agent isn't running, the key isn't added to the agent, the key hasn't been added to the version control system and activated.
+
+You can get a verbose log of the attempted connection by running:
+
+```bash
+# -1 means key is not found
+# if you use a custom key, make sure to use a config file
+ssh -vT git@github.com
+```
+
 ## Sources
 
 - [Generating a ssh key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
