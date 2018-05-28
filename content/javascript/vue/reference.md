@@ -24,7 +24,7 @@ var app = new Vue({
 })
 ```
 
-## Example component
+## Components
 
 Components are the reusable parts of Vue. Data is passed through using props.
 
@@ -59,7 +59,43 @@ var app = new Vue({
     </ol>
 ```
 
-## Example directives
+## Directives
+
+Directives are special attributes with the `v-` prefix. They are a single JavaScript expression which reactively apply side effects to the DOM when the value of its expression changes.
+
+Some directives can take an arguement which comes after the colon.
+
+```javascript
+// Example directive arguements
+<a v-bind:href="url">...</a>
+<a v-on:click="doSomething">...</a>
+```
+
+Modifiers are denoted by a dot and indicate the directive should be bound in some special way.
+
+```html
+<form v-on:submit.prevent="onSubmit">...</span>
+```
+
+## Directive Shorthands
+
+For `v-bind`
+
+```html
+<a v-bind:href="url">...</a>
+<!-- turns into -->
+<a :href="url">...</a>
+```
+
+For `v-on`
+
+```html
+<a v-on:click="doSomething">...</a>
+<!-- turns into -->
+<a @click="doSomething">...</a>
+```
+
+### Directive Examples
 
 The page with dynamic content
 
@@ -92,6 +128,20 @@ With two-way data binding
 // This is great for form content
 <p>{{ message }}</p>
 <input v-model="message">
+```
+
+Including raw HTML
+
+```javascript
+// Any bindings in the HTML will be ignored
+// NEVER TRUST USER CONTENT
+<p>Using a directive: <span v-html="rawHTML"></span></p>
+```
+
+Only update the content once
+
+```javascript
+<span v-once>This will never change: {{ message }}</span>
 ```
 
 ## Instances
@@ -183,6 +233,40 @@ new Vue({
     // DO NOT DO THIS
     // vm.$watch("a", newValue => this.myMethod())
 })
+```
+
+## Templates
+
+Templates are based on HTML syntax but can use [render functions](https://vuejs.org/v2/guide/render-function.html) instead of templates to support things like JSX.
+
+Text interpolation (substitution) using mustache syntax
+
+```javascript
+<span>Message: {{ message }}</span>
+```
+
+Mustaches cannot be used inside HTML attributes. `v-bind` must be used instead.
+
+```javascript
+// If a dynamic value
+<div v-bind:id="dynamicId"></div>
+// If a boolean value. Will fail on null, undefined, or false.
+<button v-bind:disabled="isButtonDisabled">Button</button>
+```
+
+It is possible to use JavaScript expressions (but only one). They can only access very limited global variables. They should never try to access user global variables.
+
+```javascript
+// Will work
+{{ number + 1 }}
+// ternary operator
+{{ ok ? "YES" : "NO" }}
+{{ message.split("").reverse().join("") }}
+<div v-bind:id="'list-' + id"></div>
+
+// Will not work
+{{ var a = 1 }}
+{{ if (ok) { return message } }}
 ```
 
 ## Vocabulary
