@@ -269,6 +269,106 @@ It is possible to use JavaScript expressions (but only one). They can only acces
 {{ if (ok) { return message } }}
 ```
 
+## Computed Properties
+
+Computed properties are for offloading template logic in the application. They are very similar to methods.
+
+The key difference is computed properties are cached based on their dependencies, methods always run the function.
+
+```javascript
+// Template
+<div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+// Instance
+var vm = new Vue({
+    el: "#example",
+    data: {
+        message: "Hello"
+    },
+    computed: {
+        reversedMessage: function () {
+            return this.message.split("").reverse().join("")
+        }
+    }
+})
+```
+
+## Watched Property
+
+Use `watch` sparingly and in many cases it's better to use computed property instead. Watchers are great for asynchronous or expensive operations though.
+
+```javascript
+// The template
+<div id="watch-example">
+    <p>
+        Ask a yes/no question:
+        <input v-model="question">
+    </p>
+    <p>{{ answer }}</p>
+</div>
+```
+
+```javascript
+// The instance
+// Requires axios and lodash
+var watchExampleVM = new Vue({
+    el: "#watch-example",
+    data: {
+        question: "",
+        answer: "I cannot give you an answer until you ask a question"
+    },
+    watch: {
+        question: function(newQuestion, oldQuestion) {
+            this.answer = "Waiting for you to stop typing"
+            this.debouncedGetAnswer()
+        }
+    },
+    created: function() {
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
+    },
+    methods: {
+        getAnswer: function () {
+            if (this.question.indexOf("?") === -1) {
+                this.answer = "Questions usually contain a question mark. :P"
+                return
+            }
+            this.answer = "Thinking..."
+            var vm = this
+            axios.get("https://yesno.wtf/api")
+                .then(function (response) {
+                    vm.answer = _.capitolize(response.data.answer)
+                })
+                .catch(function(error){
+                    vm.answer = "Error! Could not reach the API." + error
+                })
+        }
+    }
+})
+```
+
+## Computed Setter
+
+Computed properties are getter-only be default, but declaring setters are possible. In the example below, updating vm.fullName = "John Doe" would also set `vm.firstName` and `vm.lastName`.
+
+```javascript
+// rest of the instance code
+computed: {
+    fullName: {
+        get: function() {
+            return this.firstName + " " + this.lastName
+        },
+        set: function(newValue) {
+            var names = newValue.split(" ")
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+        }
+    }
+}
+```
+
 ## Vocabulary
 
 * directive - prefixed with `v-` and are special attributes provided for Vue
