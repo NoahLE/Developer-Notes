@@ -369,6 +369,146 @@ computed: {
 }
 ```
 
+## Class and Style Bindings
+
+Vue has helpful logic for handling classes and inline style bindings.
+
+```html
+<!-- The active class will exist if isActive is true -->
+<div
+    class="static"
+    v-bind:class="{
+        active: isActive,
+        'text-danger': hasError
+    }">
+</div>
+```
+
+Make sure the instance has the following snippet:
+
+```javascript
+...,
+data: {
+    isActive: true,
+    hasError: false
+}
+```
+
+Alternatively, the classes can be an object
+
+```javascript
+// The template
+<div v-bind:class="classObject"></div>
+
+// The instance object
+data: {
+    classObject: {
+        active: true,
+        'text-danger': false
+    }
+}
+```
+
+Computed properties are possible as well
+
+```javascript
+data: {
+    isActive: true,
+    error: null
+},
+computed: {
+    classObject: function() {
+        return {
+            active: this.isActive && !this.error,
+            'text-danger': this.error && this.error.type === 'fatal'
+        }
+    }
+}
+```
+
+It's possible to send arrays to elements as well
+
+```javascript
+// To render this
+<div class="active text-danger"></div>
+
+// Use this markup
+<div v-bind:class="[activeClass, errorClass]"></div>
+
+// And this code
+data: {
+    activeClass: "active",
+    errorClass: "text-danger"
+}
+
+// Using a ternary operator
+<div v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+
+// Using object syntax (same as the ternay operator)
+<div v-bind:class="[{active: isActive}, errorClass]"></div>
+```
+
+### Inline styling
+
+Inline styling is very similar to its CSS counterpart.
+
+```javascript
+// Purely inline
+// Template code
+<div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px'}"></div>
+
+// Instance code
+data: {
+    activeColor: "red",
+    fontSize: 30
+}
+```
+
+It's cleaner to use an object directly so the template is cleaner.
+
+```javascript
+// Inline using an object
+// Template code
+<div v-bind:style="styleObject"></div>
+
+// Instance code
+data: {
+    styleObject: {
+        color: "red",
+        fontSize: "13px"
+    }
+}
+```
+
+Vendor prefixes will be used based on what the browser supports.
+
+```html
+<div v-bind:style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }"></div>
+```
+
+### Classes with Components
+
+Existing classes will not be overwritten and the new classes will be added.
+
+```javascript
+// The base component
+Vue.component("my-component", {
+    template: "<p class='foo bar'>Hi</p>"
+})
+
+// Adding additional classes
+<my-component class="baz boo"></my-component>
+
+// Which renders
+<p class="foo bar baz boo">Hi</p>
+
+// Using a class
+<my-component v-bind:class="{ active: isActive }"></my-component>
+
+// Will render
+<p class="foo bar active">Hi</p>
+```
+
 ## Vocabulary
 
 * directive - prefixed with `v-` and are special attributes provided for Vue
