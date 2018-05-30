@@ -509,6 +509,97 @@ Vue.component("my-component", {
 <p class="foo bar active">Hi</p>
 ```
 
+## Conditional Logic
+
+### If statements
+
+If statements can be done in handlebar templates or as a directive. Any `else` or `else-if` statements must immediately follow the `if` statement.
+
+```javascript
+// Handlebars
+{{ #if ok }}
+    <h1>Hi</h1>
+{{ /if }}
+
+// Vue directive
+<h1 v-if="ok">Hi</h1>
+
+// Including Else
+<h1 v-if="ok">Hi</h1>
+<h1 v-else>Bye</h1>
+```
+
+If you want to affect multiple elements, wrap them in another component.
+
+```javascript
+// Using just 'if'
+<template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+</template>
+
+// Using an 'else' block too
+<div v-if="Math.random() > 0.5">
+    Now you see me
+</div>
+<div v-else>
+    Now you don't
+</div>
+```
+
+An `else-if` example.
+
+```javascript
+<div v-if="type === 'A'">
+    A
+</div>
+<div v-else-if="type === 'B'">
+    B
+</div>
+<div v-else>
+    Not A or B
+</div>
+```
+
+### Using `key`
+
+Normally data between fields is saved. In the code below, the username will be saved between fields because only the placeholder text will update.
+
+```javascript
+<template v-if="loginType === 'username'">
+    <label>Username</label>
+    <input placeholder="Enter your username"/>
+</template>
+<template v-else>
+    <label>Email</label>
+    <input placeholder="Enter your email address">
+<template>
+```
+
+To generate a completely new field, use the key value.
+
+```javascript
+<template v-if="loginType === 'username'">
+  <label>Username</label>
+  <input placeholder="Enter your username" key="username-input">
+</template>
+<template v-else>
+  <label>Email</label>
+  <input placeholder="Enter your email address" key="email-input">
+</template>
+```
+
+### v-show Directive
+
+`v-show` is very similar to `v-if` but is not supported in `<template>` elements or by `v-else`.
+
+`v-show` is always rendered, but only displayed if true (higher render cost), while `v-if` is rendered every time its value becomes true (higher toggle cost).
+
+```html
+<h1 v-show="ok">Hello</h1>
+```
+
 ## Vocabulary
 
 * directive - prefixed with `v-` and are special attributes provided for Vue
