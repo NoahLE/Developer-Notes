@@ -7,21 +7,11 @@ tags: ["travel", "cities"]
 
 ## Places to Go
 
-- The Salty Sow
-
 - 6th and 4th Street
 
 - Barton Springs Pool
 
 - Highway 360 South
-
-- Tatiyana Thai Cuisine
-
-- Snoos
-
-- Franklin's BBQ (get in line ~2 hours early at opening)
-
-- Rudy's BBQ
 
 - Ski Shores / The Oasis
 
@@ -31,6 +21,8 @@ tags: ["travel", "cities"]
 
 - Castle hill
 
+## Restaurants
+
 - Bone Daddy's
 
 - Din Ho
@@ -38,3 +30,43 @@ tags: ["travel", "cities"]
 - Pluckers
 
 - Quality Seafood
+
+- Franklin's BBQ (order takeout online to skip the line)
+
+- Rudy's BBQ
+
+- Tatiyana Thai Cuisine
+
+- Snoos
+
+- The Salty Sow
+
+## Recommended Restaurants
+
+- Bon Homie
+- Brennas
+- Palvos
+- Uncle Julious
+- Fonda (San Miguel)
+- Bull Fight
+- Chagos
+- Havanna (SoCo)
+- Jaraldines (brunch)
+- Pertas
+- Mandolas
+- Shay-Z
+- Waldon + Fancy Staple
+- CR Surf and Turf (legic Maine lobster)
+- Top Notch
+- Din Ho
+- Saffron
+- Hanabi
+- Black BBQ
+- Chez-Zee
+- Julia Italian Kitchen
+- Agiamo
+- Epicerie
+- Xin Jing BBQ (Houston)
+- San Tang (SF, CA)
+- Pints House Pizza
+- Hanabi
