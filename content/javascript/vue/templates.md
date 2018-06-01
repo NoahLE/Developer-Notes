@@ -13,6 +13,7 @@ Mustaches cannot be used inside HTML attributes. `v-bind` must be used instead.
 ```javascript
 // If a dynamic value
 <div v-bind:id="dynamicId"></div>
+
 // If a boolean value. Will fail on null, undefined, or false.
 <button v-bind:disabled="isButtonDisabled">Button</button>
 ```
@@ -22,9 +23,14 @@ It is possible to use JavaScript expressions (but only one). They can only acces
 ```javascript
 // Will work
 {{ number + 1 }}
-// ternary operator
+
+// Ternary operator
 {{ ok ? "YES" : "NO" }}
+
+// Using a function
 {{ message.split("").reverse().join("") }}
+
+// Using a dynamic value
 <div v-bind:id="'list-' + id"></div>
 
 // Will not work

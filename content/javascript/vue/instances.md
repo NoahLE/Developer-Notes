@@ -51,6 +51,7 @@ Object.freeze(obj);
 
 new Vue({
     <p>{{ foo }}</p>
+
     // This will not work
     <button v-on:click="foo = 'baz'">Change it</button>
 })
@@ -82,8 +83,10 @@ new Vue({
         // `this` points to the VM instance
         console.log("a is: " + this.a)
     },
+
     // DO NOT DO THIS
     // created: () => console.log(this.a)
+
     // DO NOT DO THIS
     // vm.$watch("a", newValue => this.myMethod())
 })

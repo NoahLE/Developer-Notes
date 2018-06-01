@@ -1,9 +1,9 @@
 # Initial notes for Vue.js
 
-## Sections
+## Other reference pages
 
 * [Instances](instances.md) - Vue view model declarations
-* [Directives](directives.md) - Prefixes which control component and template logic
+* [Directives](directives.md) - Prefixes (`v-`) which control component and template logic
 * [Components](components.md) - Reusable parts of Vue which contain presentational logic
 * [Templates](templates.md) - The mustache syntax for rendering content in templates
 
