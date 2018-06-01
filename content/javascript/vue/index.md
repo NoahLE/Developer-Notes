@@ -2,9 +2,10 @@
 
 ## Sections
 
-* [Instances](instances.md)
-* [Directives](directives.md)
-* [Components](components.md)
+* [Instances](instances.md) - Vue view model declarations
+* [Directives](directives.md) - Prefixes which control component and template logic
+* [Components](components.md) - Reusable parts of Vue which contain presentational logic
+* [Templates](templates.md) - The mustache syntax for rendering content in templates
 
 ## Initial app example
 
