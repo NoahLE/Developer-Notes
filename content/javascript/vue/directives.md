@@ -18,7 +18,7 @@ Modifiers are denoted by a dot and indicate the directive should be bound in som
 
 ## Directive Shorthands
 
-For `v-bind`
+### `v-bind`
 
 ```html
 <a v-bind:href="url">...</a>
@@ -26,7 +26,7 @@ For `v-bind`
 <a :href="url">...</a>
 ```
 
-For `v-on`
+### `v-on`
 
 ```html
 <a v-on:click="doSomething">...</a>
@@ -36,7 +36,7 @@ For `v-on`
 
 ## Directive Examples
 
-The page with dynamic content
+### Dynamic content and titles
 
 ```javascript
 <div id="somediv">
@@ -44,9 +44,11 @@ The page with dynamic content
 </div>
 ```
 
-With a for loop
+### For loops
 
-```javascript
+A quick example
+
+```html
 <ol>
     <li v-for="todo in todos">
         {{ todo.text }}
@@ -54,14 +56,106 @@ With a for loop
 </ol>
 ```
 
-With actions that call a function
+You can use `of` instead of `in`
+
+```html
+<div v-for="item of items"></div>
+```
+
+A larger `v-for` example
+
+```html
+<!-- A simple for loop -->
+<ul id="example1">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+```
+
+```javascript
+// The instance side
+var example1 = new Vue({
+    el: "#example1",
+    data: {
+        item: [
+            { message: "Foo" },
+            { message: "Bar" }
+        ]
+    }
+})
+```
+
+Index and accessing attributes outside of `v-for`
+
+```html
+<!-- The template code -->
+<ul id="example2">
+    <li v-for="(item, index) in items">
+        {{ parentMessage }} - {{ index }} - {{ item.message }}
+    </li>
+</ul>
+```
+
+```javascript
+// The instance side
+var example2 = new Vue({
+    el: "#example2",
+    data: {
+        parentMessage: "Parent",
+        items: [
+            { message: "Foo" },
+            { message: "Bar" }
+        ]
+    }
+})
+```
+
+Iterating though an object
+
+```html
+<!-- Using an object's value -->
+<ul id="v-for-object" class="demo">
+    <li v-for="value in object">
+        {{ value }}
+    </li>
+</ul>
+
+<!-- Using an object's key and value -->
+<div v-for="(value, key) in object">
+    {{ key }}: {{ value }}
+</div>
+
+<!-- Using an index as well as an object's key and value -->
+<div v-for="(value, key, index) in object">
+    {{ index }}. {{ key }}: {{ value }}
+</div>
+```
+
+```javascript
+// The instance
+new Vue({
+    el: "#v-for-object",
+    data: {
+        object: {
+            firstName: "Bob",
+            lastName: "Loblaw",
+            age: 30
+        }
+    }
+})
+```
+
+*Note: Key order is based on the enumeration of `Object.keys()` which may be different based on the JavaScript engine used*
+
+### Function calls
 
 ```javascript
 <p>{{ message }}</p>
 <button v-on:click="reverseMessage">Reverse</button>
 ```
 
-With two-way data binding
+### Two-way data binding
 
 ```javascript
 // This is great for form content
@@ -69,7 +163,7 @@ With two-way data binding
 <input v-model="message">
 ```
 
-Including raw HTML
+### Including raw HTML
 
 ```javascript
 // Any bindings in the HTML will be ignored
@@ -77,7 +171,7 @@ Including raw HTML
 <p>Using a directive: <span v-html="rawHTML"></span></p>
 ```
 
-Only update the content once
+### Only update the content once
 
 ```javascript
 <span v-once>This will never change: {{ message }}</span>
