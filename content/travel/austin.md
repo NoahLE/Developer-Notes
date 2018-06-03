@@ -21,28 +21,19 @@ tags: ["travel", "cities"]
 
 - Castle hill
 
-## Restaurants
-
-- Bone Daddy's
-
-- Din Ho
-
-- Pluckers
-
-- Quality Seafood
-
-- Franklin's BBQ (order takeout online to skip the line)
-
-- Rudy's BBQ
-
-- Tatiyana Thai Cuisine
-
-- Snoos
-
-- The Salty Sow
-
 ## Recommended Restaurants
 
+*Note: Some of these spellings may be incorrect. I was just copying down my notes.*
+
+- Bone Daddy's
+- Din Ho
+- Pluckers
+- Quality Seafood
+- Franklin's BBQ (order takeout online to skip the line)
+- Rudy's BBQ
+- Tatiyana Thai Cuisine
+- Snoos
+- The Salty Sow
 - Bon Homie
 - Brennas
 - Palvos
@@ -70,3 +61,5 @@ tags: ["travel", "cities"]
 - San Tang (SF, CA)
 - Pints House Pizza
 - Hanabi
+- Chester King Brewery
+- Porter King's Center
