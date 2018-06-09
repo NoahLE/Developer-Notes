@@ -46,6 +46,24 @@ Modifiers are denoted by a dot and indicate the directive should be bound in som
 
 ### For loops
 
+Vue observes arrays to see if they have the following modifications performed on them:
+
+```javascript
+// Mutate the array
+push()
+pop()
+shift()
+unshift()
+splice()
+sort()
+reverse()
+
+// Always return a new array
+filter()
+concat()
+slice()
+```
+
 A quick example
 
 ```html
@@ -147,6 +165,154 @@ new Vue({
 ```
 
 *Note: Key order is based on the enumeration of `Object.keys()` which may be different based on the JavaScript engine used*
+
+It's ideal to use a key to track items when looping through them.
+
+```html
+<div v-for="item in items" :key="item.id">
+    <!-- content -->
+</div>
+```
+
+To sort or filter an array without changing the values of the original array computed properties work best.
+
+```html
+<li v-for="n in evenNumbers">{{ n }}</li>
+```
+
+```javascript
+data: {
+    numbers: [1, 2, 3, 4, 5]
+},
+computed: {
+    evenNumbers: function() {
+        return this.numbers.filter(function (number){
+            return number %  2 === 0
+        })
+    }
+}
+```
+
+If computed properties are not an option, methods are good as well.
+
+```html
+<li v-for="n in even(numbers)">{{ n }}</li>
+```
+
+```javascript
+data: {
+    numbers: [1, 2, 3, 4, 5]
+},
+methods: {
+    even: function(numbers){
+        return numbers.filter(function (number){
+            return number % 2 === 0
+        })
+    }
+}
+```
+
+`range` can be used to easily increment values
+
+```html
+<div>
+    <span v-for="n in 10">{{ n }}</span>
+</div>
+```
+
+`v-for` blocks can of course be rendered in templates as well.
+
+```html
+<!-- Show only incomplete items -->
+<ul>
+    <template v-for="item in items">
+        <li>{{ item.msg }}</li>
+        <li class="divider" role="presentation"></li>
+    </template>
+</ul>
+
+<!-- To skip execution if a condition is not met -->
+<ul v-if="todos.length">
+    <li v-for="todo in todos">
+        {{ todo }}
+    </li>
+<ul>
+<p v-else>No todos left</p>
+```
+
+If you would like to filter items in a loop, it is possible to combine `v-for` and `v-if`.
+
+```html
+<li v-for="todo in todos" v-if="!todo.isComplete">
+    {{ todo }}
+</li>
+```
+
+#### Caveats
+
+Vue cannot detect the following changes to an array when its length is modified or the value of an index is directly set.
+
+```javascript
+var vm = new Vue({
+    data: {
+        items: ['a', 'b', 'c']
+    }
+})
+
+// Directly setting the value of an index
+vm.items[1] = 'x'
+// Changing the length of the array
+vm.items.length = 2
+```
+
+This can be bypassed by using the following methods.
+
+```javascript
+// Setting a new value
+Vue.set(vm.items, indexOfItem, newValue)
+// Changing the length of the array
+vm.items.splice(newLength)
+```
+
+It cannot detect property additions or deletions.
+
+```javascript
+var vm = new Vue({
+    data: {
+        a: 1
+    }
+}) // a is reactive
+vm.b = 2 // b is not reactive
+```
+
+This can be bypassed by using the `set` or `$set` methods.
+
+```javascript
+var vm = new Vue({
+    data: {
+        userProfile: {
+            name: 'Anika'
+        }
+    }
+})
+
+Vue.set(vm.userProfile, 'age' 27)
+vm.$set(vm.userProfile, 'age', 27)
+```
+
+If adding multiple properties `assign` is usually the easiest way to do this.
+
+```javascript
+Object.assign(vm.userProfile, {
+    age: 27,
+    favoriteColor: 'Vue green'
+})
+
+vm.userProfile = Object.assign({}, vm.userProfile, {
+    age: 27,
+    favoriteColor: 'Vue green'
+})
+```
 
 ### Function calls
 
