@@ -229,13 +229,23 @@ Vue.component('button-counter', {
 
 ## Props
 
-Data is passed down using props.
+Data is passed down using props in a one-way binding. Components are smart enough to merge class and style props.
 
 ```javascript
+// as an array
 Vue.component('blog-post', {
   props: ['title'],
   template: '<h3>{{ title }}</h3>'
 })
+
+// as an object
+props: {
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object
+}
 ```
 
 ```html
@@ -287,6 +297,120 @@ Vue.component('blog-post', {
   v-bind:key="post.id"
   v-bind:post="post"
 ></blog-post>
+```
+
+If a child component needs an initial value or to have it's inherited value transformed, one of the following actions should be done.
+
+Remember that mutating an object or array will affect the parent (because of pass by reference).
+
+```javascript
+// initial value
+props: ['initialCounter'],
+data: function () {
+  return {
+    counter: this.initialCounter
+  }
+}
+
+// inherited transformation
+props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+```
+
+Props can be fully type checked and validated as well.
+
+```javascript
+Vue.component('my-component', {
+  props: {
+    // Basic type check (`null` matches any type)
+    propA: Number,
+    // Multiple possible types
+    propB: [String, Number],
+    // Required string
+    propC: {
+      type: String,
+      required: true
+    },
+    // Number with a default value
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // Object with a default value
+    propE: {
+      type: Object,
+      // Object or array defaults must be returned from
+      // a factory function
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // Custom validator function
+    propF: {
+      validator: function (value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+})
+```
+
+Custom constructors can be type checked as well for props.
+
+```javascript
+// the constructor
+function Person (firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+
+// the prop
+Vue.component('blog-post', {
+  props: {
+    author: Person
+  }
+})
+```
+
+Undeclared attributes can still be added and accessible in the child element.
+
+```html
+<!-- data-date-picker will be availabe in the child -->
+<bootstrap-date-input data-date-picker="activated"></bootstrap-date-input>
+```
+
+To manually set which proper are inherited, disable inheritance with `inheritAttrs` and use `$attrs` instead.
+
+```javascript
+Vue.component('base-input', {
+  // disable inheritance
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  template: `
+    <label>
+      {{ label }}
+      <input
+        // use $attrs to grab the inherited values
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+      >
+    </label>
+  `
+})
+```
+
+```html
+<base-input
+  v-model="username"
+  class="username-input"
+  placeholder="Enter your username"
+></base-input>
 ```
 
 ## Sending data to parent elements
