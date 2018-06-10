@@ -4,6 +4,94 @@ Components are the reusable parts of Vue. Data is passed through using props.
 
 Components can use `data`, `computed`, `watch`, `methods`, and lifecycle hooks like other Vue instances. It cannot use `el` though.
 
+## Scope
+
+Globally registering all components is not ideal because it can increase build size.
+
+```javascript
+// global registration
+Vue.component('my-component-name', {
+  // ... options ...
+})
+```
+
+Local components are not available to sub-components, unless specifically registered.
+
+```javascript
+// local registration
+var ComponentA = { /* ... */ }
+
+// making ComponentA available to ComponentB
+var ComponentB = {
+  components: {
+    'component-a': ComponentA
+  },
+
+// the instance
+new Vue({
+  el: '#app'
+  components: {
+    'component-b': ComponentB
+  }
+})
+```
+
+ES2015+ would look like this
+
+```javascript
+import ComponentA from './ComponentA.vue'
+
+export default {
+  components: {
+    ComponentA
+  },
+  // ...
+}
+```
+
+### Base components
+
+There are often components which are used in many parts of the project which are very simple. Like wrapped buttons or inputs.
+
+It's very helpful to register these base components. That's why `require.context` was made.
+
+```javascript
+import Vue from 'vue'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+const requireComponent = require.context(
+  // The relative path of the components folder
+  './components',
+  // Whether or not to look in subfolders
+  false,
+  // The regular expression used to match base component filenames
+  /Base[A-Z]\w+\.(vue|js)$/
+)
+
+requireComponent.keys().forEach(fileName => {
+  // Get component config
+  const componentConfig = requireComponent(fileName)
+
+  // Get PascalCase name of component
+  const componentName = upperFirst(
+    camelCase(
+      // Strip the leading `'./` and extension from the filename
+      fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
+    )
+  )
+
+  // Register component globally
+  Vue.component(
+    componentName,
+    // Look for the component options on `.default`, which will
+    // exist if the component was exported with `export default`,
+    // otherwise fall back to module's root.
+    componentConfig.default || componentConfig
+  )
+})
+```
+
 ## Examples
 
 Here is an example to-do list.
