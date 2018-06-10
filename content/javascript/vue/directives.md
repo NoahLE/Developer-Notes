@@ -342,3 +342,88 @@ vm.userProfile = Object.assign({}, vm.userProfile, {
 ```javascript
 <span v-once>This will never change: {{ message }}</span>
 ```
+
+### Event listeners
+
+The `v-on` directive is used for listening to events.
+
+```javascript
+var example1 = new Vue({
+    el: "#example1",
+    data: {
+        counter: 0
+    }
+})
+
+```html
+<div id="example1">
+    <button v-on:click="counter += 1">Add 1</button>
+    <p>The button above has been clicked {{ counter }} times.</p>
+</div>
+```
+
+It's much more practical to include the logic in a method call though.
+
+```javascript
+var example2 = new Vue({
+    el: "#example2",
+    data: {
+        name: "Vue.js"
+    },
+    methods: {
+        greet: function(event) {
+            alert("Hello " + this.name + "!")
+            if (event){
+                alert(event.target.tagName)
+            }
+        }
+    }
+})
+
+// If you want to invoke the method in JavaScript
+example2.greet()
+```
+
+```html
+<div id="example2">
+    <button v-on:click="greet">Greet</button>
+</div>
+```
+
+It possible to pass variables to the methods as well
+
+```html
+<div id="example-3">
+  <button v-on:click="say('hi')">Say hi</button>
+  <button v-on:click="say('what')">Say what</button>
+</div>
+```
+
+```javascript
+new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+```
+
+Here's how to access the original DOM even in an inline statement.
+
+```html
+<button v-on:click="warn('Form cannot be submitted yet.', $event)">
+  Submit
+</button>
+```
+
+```javascript
+methods: {
+  warn: function (message, event) {
+    // now we have access to the native event
+    if (event) event.preventDefault()
+    alert(message)
+  }
+}
+```
