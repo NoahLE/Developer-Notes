@@ -687,6 +687,8 @@ If there's the possibility of passing additional information to a component, slo
 
 `is` allows for the switching of components. In the code below, the `v-bind:is=` allows for that value to be a component or an options object.
 
+To cache results or state, use the `keep-alive` element.
+
 ```html
 <div id="dynamic-component-demo" class="demo">
   <button
@@ -696,10 +698,12 @@ If there's the possibility of passing additional information to a component, slo
     v-on:click="currentTab = tab"
   >{{ tab }}</button>
 
-  <component
-    v-bind:is="currentTabComponent"
-    class="tab"
-  ></component>
+  <keep-alive>
+    <component
+      v-bind:is="currentTabComponent"
+      class="tab"
+    ></component>
+  </keep-alive>
 </div>
 ```
 
@@ -734,4 +738,70 @@ It's also good for nesting requirements such as `table` > `tr` or `ol` > `li`
 <table>
   <tr is="some-custom-component"></tr>
 </table>
+```
+
+## Async
+
+You can make factory functions when something needs to be resolved from the server. Vue will cache the result unless it needs to be rerendered.
+
+```javascript
+Vue.component('async-example', function (resolve, reject) {
+  setTimeout(function () {
+    // Pass the component definition to the resolve callback
+    resolve({
+      template: '<div>I am async!</div>'
+    })
+  }, 1000)
+})
+```
+
+If using webpack, `code-splitting` can be super helpful.
+
+```javascript
+
+
+Vue.component('async-webpack-example', function (resolve) {
+  // This special require syntax will instruct Webpack to
+  // automatically split your built code into bundles which
+  // are loaded over Ajax requests.
+  require(['./my-async-component'], resolve)
+})
+```
+
+This is how using a `promise` looks.
+
+```javascript
+// promise for a factory function
+Vue.component(
+  'async-webpack-example',
+  // The `import` function returns a Promise.
+  () => import('./my-async-component')
+)
+
+// promise using local registration
+new Vue({
+  // ...
+  components: {
+    'my-component': () => import('./my-async-component')
+  }
+})
+```
+
+Vue can also handle the different states of a request by loading different components.
+
+```javascript
+// this requires Vue router
+const AsyncComponent = () => ({
+  // The component to load (should be a Promise)
+  component: import('./MyComponent.vue'),
+  // A component to use while the async component is loading
+  loading: LoadingComponent,
+  // A component to use if the load fails
+  error: ErrorComponent,
+  // Delay before showing the loading component. Default: 200ms.
+  delay: 200,
+  // The error component will be displayed if a timeout is
+  // provided and exceeded. Default: Infinity.
+  timeout: 3000
+})
 ```
