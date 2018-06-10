@@ -583,7 +583,7 @@ Vue.component('custom-input', {
 
 ## Slots
 
-Slots are for passing things between html tags.
+Slots are for passing things between html tags, including HTML or components.
 
 ```html
 <alert-box>Some text for the alert</alert-box>
@@ -598,6 +598,89 @@ Vue.component('alert-box', {
     </div>
   `
 })
+```
+
+Slots can also be named.
+
+```html
+<!-- the parent -->
+<base-layout>
+  <template slot="header">
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template slot="footer">
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+
+<!-- the parent could also be this -->
+<base-layout>
+  <h1 slot="header">Here might be a page title</h1>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <p slot="footer">Here's some contact info</p>
+</base-layout>
+
+<!-- the child -->
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+  <!-- this default will catch anything else -->
+  <button type="submit">
+    <slot>Submit</slot>
+  </button>
+</div>
+```
+
+If there's the possibility of passing additional information to a component, slots are a great solution for this.
+
+```html
+<!-- the parent -->
+<ul>
+  <li
+    v-for="todo in todos"
+    v-bind:key="todo.id"
+  >
+    <!-- We have a slot for each todo, passing it the -->
+    <!-- `todo` object as a slot prop.                -->
+    <slot v-bind:todo="todo">
+      <!-- Fallback content -->
+      {{ todo.text }}
+    </slot>
+  </li>
+</ul>
+
+<!-- the child -->
+<todo-list v-bind:todos="todos">
+  <!-- Define `slotProps` as the name of our slot scope -->
+  <template slot-scope="slotProps">
+    <!-- Define a custom template for todo items, using -->
+    <!-- `slotProps` to customize each todo.            -->
+    <span v-if="slotProps.todo.isComplete">✓</span>
+    {{ slotProps.todo.text }}
+  </template>
+</todo-list>
+
+<!-- destructuring using es2015 -->
+<todo-list v-bind:todos="todos">
+  <template slot-scope="{ todo }">
+    <span v-if="todo.isComplete">✓</span>
+    {{ todo.text }}
+  </template>
+</todo-list>
 ```
 
 ## Is
@@ -651,4 +734,4 @@ It's also good for nesting requirements such as `table` > `tr` or `ol` > `li`
 <table>
   <tr is="some-custom-component"></tr>
 </table>
-``` 
+```
