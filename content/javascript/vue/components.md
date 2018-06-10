@@ -92,6 +92,100 @@ requireComponent.keys().forEach(fileName => {
 })
 ```
 
+## Events
+
+Always use kebab-case (some-kebab-variable).
+
+`v-model` can be used to make more intelligence state changes to children. For example, the checked state of a component.
+
+```javascript
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
+  template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
+  `
+})
+```
+
+```html
+<base-checkbox v-model="lovingVue"></base-checkbox>
+```
+
+When listening to normal events, it's possible to use the `.native` modifier for `v-on`. This can cause some problems though so `$listeners` is ideal.
+
+```html
+<!-- An example of .native -->
+<base-input v-on:focus.native="onFocus"></base-input>
+```
+
+```javascript
+// An example of $listeners
+Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  computed: {
+    inputListeners: function () {
+      var vm = this
+      // `Object.assign` merges objects together to form a new object
+      return Object.assign({},
+        // We add all the listeners from the parent
+        this.$listeners,
+        // Then we can add custom listeners or override the
+        // behavior of some listeners.
+        {
+          // This ensures that the component works with v-model
+          input: function (event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
+  },
+  template: `
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on="inputListeners"
+      >
+    </label>
+  `
+})
+```
+
+Two-way data binding can cause issues, especially when it's between a parent and a child, so emitting events is usually a much better way to handle this.
+
+```javascript
+this.$emit('update:title', newTitle)
+```
+
+```html
+<!-- updating based on an event -->
+<text-document
+  v-bind:title="doc.title"
+  v-on:update:title="doc.title = $event"
+></text-document>
+
+<!-- the shorthand notation of the above snippet -->
+<text-document 
+  v-bind:title.sync="doc.title"
+></text-document>
+
+<!-- and being used with a v-bind -->
+<text-document v-bind.sync="doc"></text-document>
+```
+
 ## Examples
 
 Here is an example to-do list.
