@@ -427,3 +427,126 @@ methods: {
   }
 }
 ```
+
+To keep event listeners to just data logic, it's possible to offload DOM logic onto the listener itself
+
+```html
+.stop
+.prevent
+.capture
+.self
+.once
+.passive
+
+<!-- the click event's propagation will be stopped -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- the submit event will no longer reload the page -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- modifiers can be chained -->
+<!-- the order does matter -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- just the modifier -->
+<form v-on:submit.prevent></form>
+
+<!-- use capture mode when adding the event listener -->
+<!-- i.e. an event targeting an inner element is handled here before being handled by that element -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- only trigger handler if event.target is the element itself -->
+<!-- i.e. not from a child element -->
+<div v-on:click.self="doThat">...</div>
+
+<!-- the click event will be triggered at most once -->
+<a v-on:click.once="doThis"></a>
+
+<!-- the scroll event's default behavior (scrolling) will happen -->
+<!-- immediately, instead of waiting for `onScroll` to complete  -->
+<!-- in case it contains `event.preventDefault()`                -->
+<!-- this is great for improving mobile device support -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+
+### Key Modifiers
+
+Key events are based on `keycodes`, custom `keycodes` or aliases.
+
+```html
+<!-- only call `vm.submit()` when the `keyCode` is 13 -->
+<input v-on:keyup.13="submit">
+
+<!-- same as above -->
+<input v-on:keyup.enter="submit">
+
+<!-- also works for shorthand -->
+<input @keyup.enter="submit">
+```
+
+Setting a custom `keycode`.
+
+```javascript
+// enable `v-on:keyup.f1`
+Vue.config.keyCodes.f1 = 112
+```
+
+It's possible to tap into `KeyboardEvent.key`.
+
+```html
+<!-- the event handler -->
+$event.key === 'PageDown'
+
+<!-- tap into it by using -->
+<input @keyup.page-down="onPageDown">
+```
+
+Here's a full list of aliases
+
+```html
+.enter
+.tab
+.delete (delete and backspace)
+.esc
+.space
+.up
+.down
+.left
+.right
+```
+
+It's possible to listen to key combinations as well.
+
+```html
+.ctrl
+.alt
+.shift
+.meta (cmd on mac, ctrl on windows)
+
+<!-- Alt + C -->
+<input @keyup.alt.67="clear">
+
+<!-- Ctrl + Click -->
+<div @click.ctrl="doSomething">Do something</div>
+```
+
+To have events fired only when these keys are pressed, use `.exact`.
+
+```html
+<!-- this will fire even if Alt or Shift is also pressed -->
+<button @click.ctrl="onClick">A</button>
+
+<!-- this will only fire when Ctrl and no other keys are pressed -->
+<button @click.ctrl.exact="onCtrlClick">A</button>
+
+<!-- this will only fire when no system modifiers are pressed -->
+<button @click.exact="onClick">A</button>
+```
+
+Mice have a couple listeners too.
+
+```javascript
+.left
+.right
+.middle
+```
