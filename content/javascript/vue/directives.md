@@ -321,12 +321,172 @@ vm.userProfile = Object.assign({}, vm.userProfile, {
 <button v-on:click="reverseMessage">Reverse</button>
 ```
 
-### Two-way data binding
+### v-model - Two-way data binding
 
 ```javascript
 // This is great for form content
 <p>{{ message }}</p>
-<input v-model="message">
+<input v-model="message" placeholder="edit me">
+```
+
+#### Modifiers
+
+Here are some modifiers included with `v-model`.
+
+```html
+<!-- synced after "change" instead of "input" -->
+<input v-model.lazy="msg" >
+
+<!-- to typecast the value as a number -->
+<input v-model.number="age" type="number">
+
+<!-- to automatically trim the message -->
+<input v-model.trim="msg">
+```
+
+#### Forms
+
+`v-model` will ignore initial values of `value`, `checked`, or `selected` (the inital value should be declared in the `data` section of your component.
+
+This is an example using checkboxes.
+
+```html
+<div id='example-3'>
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+  <label for="jack">Jack</label>
+  <input type="checkbox" id="john" value="John" v-model="checkedNames">
+  <label for="john">John</label>
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+  <label for="mike">Mike</label>
+  <br>
+  <span>Checked names: {{ checkedNames }}</span>
+</div>
+```
+
+```javascript
+new Vue({
+  el: '#example-3',
+  data: {
+    checkedNames: []
+  }
+})
+```
+
+Using radio buttons.
+
+```html
+<input type="radio" id="one" value="One" v-model="picked">
+<label for="one">One</label>
+<br>
+<input type="radio" id="two" value="Two" v-model="picked">
+<label for="two">Two</label>
+<br>
+<span>Picked: {{ picked }}</span>
+```
+
+Using select.
+
+```html
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<span>Selected: {{ selected }}</span>
+```
+
+```javascript
+new Vue({
+  el: '...',
+  data: {
+    //   Because of how iOS behaves, it is recommended to have a disabled option with an empty value like below.
+    selected: ''
+  }
+})
+```
+
+Using select with items generated from a `v-for` loop.
+
+```html
+<select v-model="selected">
+  <option v-for="option in options" v-bind:value="option.value">
+    {{ option.text }}
+  </option>
+</select>
+<span>Selected: {{ selected }}</span>
+```
+
+```javascript
+new Vue({
+  el: '...',
+  data: {
+    selected: 'A',
+    options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
+  }
+})
+```
+
+Multiselect example
+
+```html
+<select v-model="selected" multiple>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+<br>
+<span>Selected: {{ selected }}</span>
+```
+
+Somes it's useful to bind other values to fields.
+
+Such as checkboxes:
+
+```javascript
+// when checked:
+vm.toggle === 'yes'
+// when unchecked:
+vm.toggle === 'no'
+```
+
+```html
+<input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no"
+>
+```
+
+Radio buttons:
+
+```html
+<input type="radio" v-model="pick" v-bind:value="a">
+```
+
+```javascript
+// when checked:
+vm.pick === vm.a
+```
+
+And selects
+
+```javascript
+// when selected:
+typeof vm.selected // => 'object'
+vm.selected.number // => 123
+```
+
+```html
+<select v-model="selected">
+  <!-- inline object literal -->
+  <option v-bind:value="{ number: 123 }">123</option>
+</select>
 ```
 
 ### Including raw HTML
