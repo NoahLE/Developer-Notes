@@ -2,6 +2,194 @@
 
 Components are the reusable parts of Vue. Data is passed through using props.
 
+Components can use `data`, `computed`, `watch`, `methods`, and lifecycle hooks like other Vue instances. It cannot use `el` though.
+
+## Scope
+
+Globally registering all components is not ideal because it can increase build size.
+
+```javascript
+// global registration
+Vue.component('my-component-name', {
+  // ... options ...
+})
+```
+
+Local components are not available to sub-components, unless specifically registered.
+
+```javascript
+// local registration
+var ComponentA = { /* ... */ }
+
+// making ComponentA available to ComponentB
+var ComponentB = {
+  components: {
+    'component-a': ComponentA
+  },
+
+// the instance
+new Vue({
+  el: '#app'
+  components: {
+    'component-b': ComponentB
+  }
+})
+```
+
+ES2015+ would look like this
+
+```javascript
+import ComponentA from './ComponentA.vue'
+
+export default {
+  components: {
+    ComponentA
+  },
+  // ...
+}
+```
+
+### Base components
+
+There are often components which are used in many parts of the project which are very simple. Like wrapped buttons or inputs.
+
+It's very helpful to register these base components. That's why `require.context` was made.
+
+```javascript
+import Vue from 'vue'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
+const requireComponent = require.context(
+  // The relative path of the components folder
+  './components',
+  // Whether or not to look in subfolders
+  false,
+  // The regular expression used to match base component filenames
+  /Base[A-Z]\w+\.(vue|js)$/
+)
+
+requireComponent.keys().forEach(fileName => {
+  // Get component config
+  const componentConfig = requireComponent(fileName)
+
+  // Get PascalCase name of component
+  const componentName = upperFirst(
+    camelCase(
+      // Strip the leading `'./` and extension from the filename
+      fileName.replace(/^\.\/(.*)\.\w+$/, '$1')
+    )
+  )
+
+  // Register component globally
+  Vue.component(
+    componentName,
+    // Look for the component options on `.default`, which will
+    // exist if the component was exported with `export default`,
+    // otherwise fall back to module's root.
+    componentConfig.default || componentConfig
+  )
+})
+```
+
+## Events
+
+Always use kebab-case (some-kebab-variable).
+
+`v-model` can be used to make more intelligence state changes to children. For example, the checked state of a component.
+
+```javascript
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
+  template: `
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
+  `
+})
+```
+
+```html
+<base-checkbox v-model="lovingVue"></base-checkbox>
+```
+
+When listening to normal events, it's possible to use the `.native` modifier for `v-on`. This can cause some problems though so `$listeners` is ideal.
+
+```html
+<!-- An example of .native -->
+<base-input v-on:focus.native="onFocus"></base-input>
+```
+
+```javascript
+// An example of $listeners
+Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  computed: {
+    inputListeners: function () {
+      var vm = this
+      // `Object.assign` merges objects together to form a new object
+      return Object.assign({},
+        // We add all the listeners from the parent
+        this.$listeners,
+        // Then we can add custom listeners or override the
+        // behavior of some listeners.
+        {
+          // This ensures that the component works with v-model
+          input: function (event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
+  },
+  template: `
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on="inputListeners"
+      >
+    </label>
+  `
+})
+```
+
+Two-way data binding can cause issues, especially when it's between a parent and a child, so emitting events is usually a much better way to handle this.
+
+```javascript
+this.$emit('update:title', newTitle)
+```
+
+```html
+<!-- updating based on an event -->
+<text-document
+  v-bind:title="doc.title"
+  v-on:update:title="doc.title = $event"
+></text-document>
+
+<!-- the shorthand notation of the above snippet -->
+<text-document 
+  v-bind:title.sync="doc.title"
+></text-document>
+
+<!-- and being used with a v-bind -->
+<text-document v-bind.sync="doc"></text-document>
+```
+
+## Examples
+
+Here is an example to-do list.
+
 ```javascript
 // Declare the component
 Vue.component("todo-item", {
@@ -106,4 +294,514 @@ new Vue({
     ></li>
   </ul>
 </div>
+```
+
+An example counter button.
+
+```javascript
+// hooking into the template
+// this is a global component registration
+new Vue({ el: "#components-demo"})
+
+// the logic
+Vue.component('button-counter', {
+  // data MUST be a function
+  data: function(){
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+})
+```
+
+```html
+<div id="components-demo">
+  <button-counter></button-counter>
+</div>
+```
+
+## Props
+
+Data is passed down using props in a one-way binding. Components are smart enough to merge class and style props.
+
+```javascript
+// as an array
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+
+// as an object
+props: {
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object
+}
+```
+
+```html
+<blog-post title="My journey with Vue"></blog-post>
+<blog-post title="Blogging with Vue"></blog-post>
+<blog-post title="Why Vue is so fun"></blog-post>
+```
+
+Using props with a for loop looks like this.
+
+```javascript
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'My journey with Vue' },
+      { id: 2, title: 'Blogging with Vue' },
+      { id: 3, title: 'Why Vue is so fun' }
+    ]
+  }
+})
+```
+
+```html
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+></blog-post>
+```
+
+To keep props under control, you should pass an object to it instead.
+
+```javascript
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+```html
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:post="post"
+></blog-post>
+```
+
+If a child component needs an initial value or to have it's inherited value transformed, one of the following actions should be done.
+
+Remember that mutating an object or array will affect the parent (because of pass by reference).
+
+```javascript
+// initial value
+props: ['initialCounter'],
+data: function () {
+  return {
+    counter: this.initialCounter
+  }
+}
+
+// inherited transformation
+props: ['size'],
+computed: {
+  normalizedSize: function () {
+    return this.size.trim().toLowerCase()
+  }
+}
+```
+
+Props can be fully type checked and validated as well.
+
+```javascript
+Vue.component('my-component', {
+  props: {
+    // Basic type check (`null` matches any type)
+    propA: Number,
+    // Multiple possible types
+    propB: [String, Number],
+    // Required string
+    propC: {
+      type: String,
+      required: true
+    },
+    // Number with a default value
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // Object with a default value
+    propE: {
+      type: Object,
+      // Object or array defaults must be returned from
+      // a factory function
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // Custom validator function
+    propF: {
+      validator: function (value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+})
+```
+
+Custom constructors can be type checked as well for props.
+
+```javascript
+// the constructor
+function Person (firstName, lastName) {
+  this.firstName = firstName
+  this.lastName = lastName
+}
+
+// the prop
+Vue.component('blog-post', {
+  props: {
+    author: Person
+  }
+})
+```
+
+Undeclared attributes can still be added and accessible in the child element.
+
+```html
+<!-- data-date-picker will be availabe in the child -->
+<bootstrap-date-input data-date-picker="activated"></bootstrap-date-input>
+```
+
+To manually set which proper are inherited, disable inheritance with `inheritAttrs` and use `$attrs` instead.
+
+```javascript
+Vue.component('base-input', {
+  // disable inheritance
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  template: `
+    <label>
+      {{ label }}
+      <input
+        // use $attrs to grab the inherited values
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="$emit('input', $event.target.value)"
+      >
+    </label>
+  `
+})
+```
+
+```html
+<base-input
+  v-model="username"
+  class="username-input"
+  placeholder="Enter your username"
+></base-input>
+```
+
+## Sending data to parent elements
+
+In the state tracking the attribute which will be changes
+
+```javascript
+new Vue({
+  el: '#blog-posts-events-demo',
+  data: {
+    posts: [/* ... */],
+    postFontSize: 1
+  },
+  methods: {
+    onEnlargeText: function (enlargeAmount) {
+      this.postFontSize += enlargement
+    }
+  }
+})
+```
+
+In the component, add the value that will change.
+
+```html
+<div id="blog-posts-events-demo">
+  <div :style="{ fontSize: postFontSize + 'em' }">
+    <blog-post
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:post="post"
+      <!-- v-on:enlarge-text="postFontSize += $event" -->
+      <v-on:enlarge-text="onEnlargeText"
+    ></blog-post>
+  </div>
+</div>
+```
+
+And change the component to have the element that will change the value using `$emit`.
+
+```javascript
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <-- The second value in emit is optional -->
+      <button v-on:click="$emit('enlarge-text', 0.1)">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+## Using v-model
+
+It's possible to use `v-model` with components.
+
+```javascript
+Vue.component('custom-input', {
+  props: ['value'],
+  template: `
+    <input
+      v-bind:value="value"
+      // note that it's not this: v-on:input="searchText = $event.target.value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+})
+```
+
+```html
+<custom-input v-model="searchText"></custom-input>
+```
+
+## Slots
+
+Slots are for passing things between html tags, including HTML or components.
+
+```html
+<alert-box>Some text for the alert</alert-box>
+```
+
+```javascript
+Vue.component('alert-box', {
+  template: `
+    <div class="demo-alert-box">
+      <strong>Error!</strong>
+      <slot></slot>
+    </div>
+  `
+})
+```
+
+Slots can also be named.
+
+```html
+<!-- the parent -->
+<base-layout>
+  <template slot="header">
+    <h1>Here might be a page title</h1>
+  </template>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <template slot="footer">
+    <p>Here's some contact info</p>
+  </template>
+</base-layout>
+
+<!-- the parent could also be this -->
+<base-layout>
+  <h1 slot="header">Here might be a page title</h1>
+
+  <p>A paragraph for the main content.</p>
+  <p>And another one.</p>
+
+  <p slot="footer">Here's some contact info</p>
+</base-layout>
+
+<!-- the child -->
+<div class="container">
+  <header>
+    <slot name="header"></slot>
+  </header>
+  <main>
+    <slot></slot>
+  </main>
+  <footer>
+    <slot name="footer"></slot>
+  </footer>
+  <!-- this default will catch anything else -->
+  <button type="submit">
+    <slot>Submit</slot>
+  </button>
+</div>
+```
+
+If there's the possibility of passing additional information to a component, slots are a great solution for this.
+
+```html
+<!-- the parent -->
+<ul>
+  <li
+    v-for="todo in todos"
+    v-bind:key="todo.id"
+  >
+    <!-- We have a slot for each todo, passing it the -->
+    <!-- `todo` object as a slot prop.                -->
+    <slot v-bind:todo="todo">
+      <!-- Fallback content -->
+      {{ todo.text }}
+    </slot>
+  </li>
+</ul>
+
+<!-- the child -->
+<todo-list v-bind:todos="todos">
+  <!-- Define `slotProps` as the name of our slot scope -->
+  <template slot-scope="slotProps">
+    <!-- Define a custom template for todo items, using -->
+    <!-- `slotProps` to customize each todo.            -->
+    <span v-if="slotProps.todo.isComplete">✓</span>
+    {{ slotProps.todo.text }}
+  </template>
+</todo-list>
+
+<!-- destructuring using es2015 -->
+<todo-list v-bind:todos="todos">
+  <template slot-scope="{ todo }">
+    <span v-if="todo.isComplete">✓</span>
+    {{ todo.text }}
+  </template>
+</todo-list>
+```
+
+## Is
+
+`is` allows for the switching of components. In the code below, the `v-bind:is=` allows for that value to be a component or an options object.
+
+To cache results or state, use the `keep-alive` element.
+
+```html
+<div id="dynamic-component-demo" class="demo">
+  <button
+    v-for="tab in tabs"
+    v-bind:key="tab"
+    v-bind:class="['tab-button', { active: currentTab === tab }]"
+    v-on:click="currentTab = tab"
+  >{{ tab }}</button>
+
+  <keep-alive>
+    <component
+      v-bind:is="currentTabComponent"
+      class="tab"
+    ></component>
+  </keep-alive>
+</div>
+```
+
+```javascript
+Vue.component('tab-home', {
+  template: '<div>Home component</div>'
+})
+Vue.component('tab-posts', {
+  template: '<div>Posts component</div>'
+})
+Vue.component('tab-archive', {
+  template: '<div>Archive component</div>'
+})
+
+new Vue({
+  el: '#dynamic-component-demo',
+  data: {
+    currentTab: 'Home',
+    tabs: ['Home', 'Posts', 'Archive']
+  },
+  computed: {
+    currentTabComponent: function () {
+      return 'tab-' + this.currentTab.toLowerCase()
+    }
+  }
+})
+```
+
+It's also good for nesting requirements such as `table` > `tr` or `ol` > `li`
+
+```html
+<table>
+  <tr is="some-custom-component"></tr>
+</table>
+```
+
+## Async
+
+You can make factory functions when something needs to be resolved from the server. Vue will cache the result unless it needs to be rerendered.
+
+```javascript
+Vue.component('async-example', function (resolve, reject) {
+  setTimeout(function () {
+    // Pass the component definition to the resolve callback
+    resolve({
+      template: '<div>I am async!</div>'
+    })
+  }, 1000)
+})
+```
+
+If using webpack, `code-splitting` can be super helpful.
+
+```javascript
+
+
+Vue.component('async-webpack-example', function (resolve) {
+  // This special require syntax will instruct Webpack to
+  // automatically split your built code into bundles which
+  // are loaded over Ajax requests.
+  require(['./my-async-component'], resolve)
+})
+```
+
+This is how using a `promise` looks.
+
+```javascript
+// promise for a factory function
+Vue.component(
+  'async-webpack-example',
+  // The `import` function returns a Promise.
+  () => import('./my-async-component')
+)
+
+// promise using local registration
+new Vue({
+  // ...
+  components: {
+    'my-component': () => import('./my-async-component')
+  }
+})
+```
+
+Vue can also handle the different states of a request by loading different components.
+
+```javascript
+// this requires Vue router
+const AsyncComponent = () => ({
+  // The component to load (should be a Promise)
+  component: import('./MyComponent.vue'),
+  // A component to use while the async component is loading
+  loading: LoadingComponent,
+  // A component to use if the load fails
+  error: ErrorComponent,
+  // Delay before showing the loading component. Default: 200ms.
+  delay: 200,
+  // The error component will be displayed if a timeout is
+  // provided and exceeded. Default: Infinity.
+  timeout: 3000
+})
 ```
