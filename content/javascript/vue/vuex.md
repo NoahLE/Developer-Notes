@@ -59,6 +59,8 @@ const Counter = {
 }
 ```
 
+## State
+
 Accessing the state and triggering a state change.
 
 ```javascript
@@ -180,6 +182,236 @@ export default {
 }
 ```
 
+## Mutations
+
+Mutations have a type and a handler. The handler performs the state modifications.
+
+Its best practice to send an object for an arguement to a mutator.
+
+Mutations must by synchronous.
+
+```javascript
+const store = new Vuex.Store({
+    state: {
+        count: 1
+    },
+    mutations: {
+        // the state is always the first argument it receives
+        increment (state) {
+            // mutate the state
+            state.count++
+        },
+        superIncrement (state, n) {
+            state.count += n
+        },
+        // THIS IS BEST PRACTICE
+        superDuperIncrement (state, payload) {
+            state.count += payload.amount
+        }
+    }
+})
+```
+
+To call a mutation, you must invoke it's handler like so:
+
+```javascript
+store.commit('increment')
+store.commit('increment', 10)
+store.commit('superDuperIncrement', { amount: 10})
+// THIS IS BEST PRACTICE
+store.commit({
+    type: 'increment',
+    amount: 10
+})
+```
+
+Mutations can be brought into components by using `this.$store.commit('...')` or `mapMutations`.
+
+```javascript
+import { mapMutations } from 'vuex'
+
+export default {
+    methods: {
+        ...mapMutations([
+            // this.increment === this.$store.commit('increment')
+            'increment',
+            // this.incrementBy === this.$store.commit('incrementBy', amount)
+            'incrementBy'
+        ]),
+        ...mapMutations([
+            // this.add() === this.$store.commit('increment')
+            add: 'increment'
+        ])
+    }
+}
+```
+
+## Actions
+
+Actions are like mutations, but can work asynchronously. Mutations change the state, while actions commit changes.
+
+```javascript
+const store = new Vuex.Store({
+    state: {
+        count: 0
+    },
+    mutations: {
+        increment (state) {
+            state.count++
+        }
+    },
+    // the es5 way to do things
+    actions: {
+        increment ({ commit }) {
+            commit('increment')
+        }
+    }
+    // the vanilla method
+    actions: {
+        increment (context) {
+            context.commit('increment')
+        }
+    }
+})
+```
+
+Actions receive all the state information through `context.state` and the getter methods through `context.getters`.
+
+Actions are triggered using the `dispatch` method.
+
+```javascript
+actions: {
+    incrementAsync ({ commit  }) {
+        setTimeout(() => {
+            commit('increment')
+        }, 1000)
+    }
+}
+```
+
+And actually doing something.
+
+```javascript
+store.dispatch('incrementAsync', { amount: 10 })
+store.dispatch({ type: 'incrementAsync', amount: 10 })
+```
+
+If calling an API, it would look something like this:
+
+```javascript
+actions: {
+    checkout ({ commit, state }, products) {
+        // save the items in the cart
+        const savedCartItems = [...state.cart.added]
+        // send the checkout request and clear the items
+        commit(types.CHECKOUT_REQUEST)
+        shop.buyProducts(
+            products,
+            // if success
+            () => commit(types.CHECKOUT_SUCCESS)
+            // if failure
+            () => commit(types.CHECKOUT_FAILURE, savedCartItems)
+        )
+    }
+}
+```
+
+If using a component it inherits by using `mapActions`.
+
+```javascript
+import { mapActions } from 'vuex'
+
+export default {
+    methods: {
+        ...mapActions([
+            // this.increment() === this.$store.dispatch('increment')
+            'increment',
+            'incrementBy'
+        ]),
+        ...mapActions([
+            // this.add() === this.$store.dispatch('increment')
+            add: 'increment'
+        ])
+    }
+}
+```
+
+Using `await` and `async` in actions.
+
+```javascript
+actions: {
+    async actionA ({ commit }) {
+        commit('gotData', await getData())
+    },
+    async actionB ({ dispatch, commit }) {
+        await dispatch('actionA')
+        commit('gotOtherData', await getOtherData())
+    }
+}
+```
+
+Since actions are asynchronous, they return a Promise. This great for when multiple actions have been dispatched.
+
+```javascript
+actions: {
+    actionA ({ commit }) {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                commit('someMutation')
+                resolve()
+            }, 1000)
+        })
+    },
+    actionB ({ dispatch, commit }) {
+        return dispatch('actionA').then(() => {
+            commit('someOtherMutation')
+        })
+    }
+}
+```
+
+So `then`...
+
+```javascript
+store.dispatch('actionA').then(() => {
+    // ...
+})
+```
+
+## Caveats
+
+* Initialize your state will all desired fields upfront to make them reactive
+
+* When adding new properties to an object, use: `Vue.set(obj, 'new prop', 123)` or `state.obj = { ...state.obj, newProp: 123 }`.
+
+## Constants
+
+Constants can be helpful for quickly showing developers what actions are available in large projects. They can also tie into linters nicely. It is purely an OPTIONAL choice though.
+
+A file which contains all constants.
+
+```javascript
+// mutation-types.js
+// constants.js
+export const SOME_MUTATION = 'SOME_MUTATION'
+```
+
+The actual use of the constants.
+
+```javascript
+import Vuex from 'vuex'
+import { SOME_MUTATION } from './mutation-types'
+
+const store = new Vuex.Store({
+    state: {...},
+    mutations: {
+        [SOME_MUTATION] (state) {
+            // mutation stuff
+        }
+    }
+})
+```
+
 ## Resources
 
-- [Vuex Documentation](https://vuex.vuejs.org/)
+* [Vuex Documentation](https://vuex.vuejs.org/)
