@@ -378,6 +378,245 @@ store.dispatch('actionA').then(() => {
 })
 ```
 
+## Modules
+
+Modules are a way to break applications up into parts. This is excellent for handling large applications. Each module can hold the state, mutations, actions, getters, and other modules.
+
+```javascript
+const moduleA = {
+    // setting the initial local state
+    state: { count: 0 },
+    mutations: {
+        increment (state) {
+            state.count++
+        }
+    },
+    actions: {
+        // local state = context.state
+        // root state = context.rootState
+        incrementIfOddOnRootSum({ state, commit, rootState }) {
+            if ((state.count + rootState.count) % 2 === 1) {
+                commit('increment')
+            }
+        }
+    },
+    getters: {
+        doubleCount (state) {
+            return state.count * 2
+        },
+        // the third argument will always be the root state
+        sumWithRootCount(state, getters, rootState) {
+            return state.count + rootState.count
+        }
+    }
+}
+
+const moduleB = {
+    state: {...},
+    mutations: {...},
+    actions: {...},
+    getters: {...}
+}
+
+const store = new Vuex.Store({
+    modules: {
+        a: moduleA,
+        b: moduleB
+    }
+})
+
+// getting values from the different states
+store.state.a
+store.state.b
+```
+
+Names are by default namespaced unless the `namespaced` variable is used.
+
+```javascript
+const store = new Vuex.Store({
+  modules: {
+    account: {
+      namespaced: true,
+
+      // module state is already nested and not affected by namespace option
+      state: { ... },
+      getters: {
+        // getters['account/isAdmin']
+        isAdmin () { ... }
+      },
+      actions: {
+        // dispatch('account/login')
+        login () { ... }
+      },
+      mutations: {
+        // commit('account/login')
+        login () { ... }
+      },
+
+      // nested modules
+      modules: {
+        // inherits the namespace from parent module
+        myPage: {
+          state: { ... },
+          getters: {
+            // getters['account/profile']
+            profile () { ... }
+          }
+        },
+
+        // further nest the namespace
+        posts: {
+          namespaced: true,
+
+          state: { ... },
+          getters: {
+            // getters['account/posts/popular']
+            popular () { ... }
+          }
+        }
+      }
+    }
+  }
+})
+```
+
+To access global assets such as state and getters, use `rootState` and `rootGetter`. To dispatch actions or mutations pass `{ root: true }`.
+
+```javascript
+modules: {
+  foo: {
+    namespaced: true,
+
+    getters: {
+      someGetter (state, getters, rootState, rootGetters) {
+        // 'foo/someOtherGetter'
+        getters.someOtherGetter
+        // 'someOtherGetter' = this will access a global getter
+        rootGetters.someOtherGetter
+      },
+      someOtherGetter: state => { ... }
+    },
+
+    actions: {
+      // dispatch and commit are also localized for this module
+      // they will accept `root` option for the root dispatch/commit
+      someAction ({ dispatch, commit, getters, rootGetters }) {
+        getters.someGetter // -> 'foo/someGetter'
+        rootGetters.someGetter // -> 'someGetter'
+
+        dispatch('someOtherAction') // -> 'foo/someOtherAction'
+        dispatch('someOtherAction', null, { root: true }) // -> 'someOtherAction'
+
+        commit('someMutation') // -> 'foo/someMutation'
+        commit('someMutation', null, { root: true }) // -> 'someMutation'
+      },
+      someOtherAction (ctx, payload) { ... }
+    }
+  }
+}
+```
+
+To register a global namespaced action in a module, use `root: true`
+
+```javascript
+{
+  actions: {
+    someOtherAction ({dispatch}) {
+      dispatch('someAction')
+    }
+  },
+  modules: {
+    foo: {
+      namespaced: true,
+
+      actions: {
+        someAction: {
+          root: true,
+          handler (namespacedContext, payload) { ... } // -> 'someAction'
+        }
+      }
+    }
+  }
+}
+```
+
+When using things like `mapState`, `mapActions`, and other methods, it's possible to use a namespace to simplify the import.
+
+```javascript
+computed: {
+  // the namespaced module
+  ...mapState('some/nested/module', {
+    // a: state => state.some.nested.module.a,
+    a: state => state.a,
+    // b: state => state.some.nested.module.b
+    b: state => state.b
+  })
+},
+methods: {
+  // the namespaced module
+  ...mapActions('some/nested/module', [
+    // 'some/nested/module/foo',
+    'foo',
+    // 'some/nested/module/bar'
+    'bar'
+  ])
+}
+```
+
+To make things even easier, `createNamespacedHelpers` was made.
+
+```javascript
+import { createNamespacedHelpers } from 'vuex'
+
+const { mapState, mapActions } = createNamespacedHelpers('some/nested/module')
+
+export default {
+  computed: {
+    // look up in `some/nested/module`
+    ...mapState({
+      a: state => state.a,
+      b: state => state.b
+    })
+  },
+  methods: {
+    // look up in `some/nested/module`
+    ...mapActions([
+      'foo',
+      'bar'
+    ])
+  }
+}
+```
+
+Modules can be dynamically added after the store had been created. They can be removed as well using `store.unregisterModule(moduleName)`. To keep the state use `preserveState`.
+
+```javascript
+// these modules, are available as store.state.myModule and store.state.nested.myModule
+
+// register a module `myModule`
+store.registerModule('myModule', {
+  // ...
+})
+
+// register a nested module `nested/myModule`
+store.registerModule(['nested', 'myModule'], {
+  // ...
+})
+```
+
+Module reuse
+
+```javascript
+const MyReusableModule = {
+  state () {
+    return {
+      foo: 'bar'
+    }
+  },
+  // mutations, actions, getters...
+}
+```
+
 ## Caveats
 
 * Initialize your state will all desired fields upfront to make them reactive
