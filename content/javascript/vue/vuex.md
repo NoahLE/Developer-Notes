@@ -2,11 +2,19 @@
 
 Vuex is a way of tracking the state of an application. This is an excellent way to have a single source of truth for an application.
 
+## To do
+
+* Testing section
+
+* Hot reloading section
+
 ## Notes
 
 When the state changes, Vue components that are subscribed to it change as well.
 
 The store cannot be directly mutated. Instead, committing `mutations` cause the store to update.
+
+Strict mode throws errors the state is mutated outside of mutation handlers. Do not use in production!
 
 ## Example
 
@@ -105,6 +113,54 @@ The spread operator is excellent for combining state objects.
 computed: {
     localComputed () {},
     ...mapState({})
+}
+```
+
+To handle a form in strict mode, the code would look something like the code below. 
+A lot of `v-model` functionality is lost so the second code example may be more ideal.
+
+```html
+<!-- the form -->
+<input :value="message" @input="updateMessage">
+```
+
+```javascript
+// the mutation call
+computed: {
+    ...mapState({
+        message: state => state.obj.message
+    })
+},
+methods: {
+    updateMessage(e) {
+        this.$store.commit('updateMessage', e.target.value)
+    }
+}
+
+// the mutation handler
+mutations: {
+    updateMessage (state, message){
+        state.obj.message = message
+    }
+}
+```
+
+To solve the same problem by using a two-way computed property would look like this.
+
+```html
+<input v-model="message">
+```
+
+```javascript
+computed: {
+    message: {
+        get () {
+            return this.$store.state.obj.message
+        },
+        set (value) {
+            this.$store.commit('updateMessage', value)
+        }
+    }
 }
 ```
 
@@ -648,6 +704,74 @@ const store = new Vuex.Store({
             // mutation stuff
         }
     }
+})
+```
+
+## Plugins
+
+Plugins accept the store and exposes a hook for each mutation. They cannot directly mutate the state, but do so by committing mutations.
+
+```javascript
+const myPlugin = store => {
+    // called when the store is inialized
+    store.subscribe((mutation, state) => {
+        // called after every mutation (formatted like `{ type, payload }`)
+    })
+}
+
+// plugins are added like this
+const store = new Vuex.Store({
+    plugins: [myPlugin]
+})
+```
+
+A sample update using websockets.
+
+```javascript
+// the code for the plugin
+export default function createWebSocketPlugin(socket) {
+    return store => {
+        socket.on('data', data => {
+            store.commit('receivedData', data)
+        })
+        store.subscribe(mutation => {
+            socket.emit('update', mutation.payload)
+        })
+    }
+}
+
+// initializing the plugin
+const webSocketPlugin = createWebSocketPlugin(socket);
+
+const store = new Vuex.Store({
+    state,
+    mutations,
+    plugins: [plugin]
+})
+```
+
+To create a state snapshot and compare the differences between the two, the code would look something like this.
+
+```javascript
+const myPluginWithSnapshot = store => {
+    let prevState = _.cloneDeep(store.state)
+    store.subscribe((mutation, state) => {
+        let nextState = _.cloneDeep(state)
+        // compare the states here
+
+        // update to the next state
+        prevState = nextState
+    })
+}
+```
+
+To use a snapshot only during development, use something like this.
+
+```javascript
+const store = new Vuex.Store({
+    plugins: process.env.NODE_ENV !== 'production'
+        ? [myPluginWithSnapshot]
+        : []
 })
 ```
 
