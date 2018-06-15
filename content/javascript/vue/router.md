@@ -8,6 +8,8 @@ If a component is reused for a similar route, lifecycle hooks will not be called
 
 ## Examples
 
+### A basic application
+
 The application template
 
 ```html
@@ -83,6 +85,58 @@ export default {
         : this.$router.push('/')
     }
   }
+}
+```
+
+### Nested Routes
+
+```html
+<div id="app">
+  <router-view></router-view>
+</div>
+```
+
+```javascript
+// the component which shows the URL in the component
+const User = {
+  template: '<div>User {{ $route.params.id }}</div>'
+}
+
+// children helps with handling the nested routes
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          // UserProfile will be rendered inside User's <router-view>
+          // when /user/:id/profile is matched
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          // UserPosts will be rendered inside User's <router-view>
+          // when /user/:id/posts is matched
+          path: 'posts',
+          component: UserPosts
+        },
+        {
+          // runs when /user/:id is matched
+          path: '',
+          component: UserHome
+        }
+      ]
+    }
+  ]
+})
+
+// the user component with a nested route
+const User = {
+  template: `
+    <div class="user">
+      <h2>User {{ $route.params.id }}</h2>
+      <router-view></router-view>
+    </div>
+  `
 }
 ```
 
