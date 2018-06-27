@@ -8,6 +8,7 @@ Commands are sent via `nginx -s <signal>`. When the command is sent, the worker 
 
 The possible signals are the following:
 
+- `nginx -g daemon off;` - standard nginx run command
 - `stop` — fast shutdown
 - `quit` — graceful shutdown
 - `reload` — reloading the configuration file
