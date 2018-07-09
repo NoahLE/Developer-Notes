@@ -26,6 +26,7 @@ tags: ["environment"]
 - [Karabiner](https://pqrs.org/osx/karabiner/) - A keyboard customizer (excellent for switching the command and ctrl buttons)
 - [Spectacle](https://www.spectacleapp.com/) - Helps resize windows quickly
 - [unetbootin](https://unetbootin.github.io/) - For making bootable USB drives
+- [menu meters](https://member.ipmu.jp/yuji.tachikawa/MenuMetersElCapitan/) - An excellent little app for showing CPU, memory, network, and hard drive metrics
 
 ## IDEs and editors
 
