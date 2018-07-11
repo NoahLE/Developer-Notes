@@ -26,7 +26,7 @@ tags: ["travel", "cities"]
 - Franklin's BBQ (order takeout online to skip the line)
 - Rudy's BBQ
 - Tatiyana Thai Cuisine
-- Snoos
+- Snoos (unlisted weekend pancake special - listen to waiter)(good benedict)
 - The Salty Sow
 - Bon Homie
 - Brennas
