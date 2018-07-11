@@ -8,17 +8,11 @@ tags: ["travel", "cities"]
 ## Places to Go
 
 - 6th and 4th Street
-
 - Barton Springs Pool
-
 - Highway 360 South
-
 - Ski Shores / The Oasis
-
 - SoCo area
-
 - the green belt / sculpture falls / zilker park
-
 - Castle hill
 
 ## Recommended Restaurants
@@ -63,6 +57,7 @@ tags: ["travel", "cities"]
 - Hanabi
 - Chester King Brewery
 - Porter King's Center
+- Perry's Steakhouse & Grille
 
 ## Recommended Bars
 
