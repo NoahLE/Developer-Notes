@@ -63,6 +63,8 @@ tags: ["travel", "cities"]
 - Hanabi
 - Chester King Brewery
 - Porter King's Center
+- Tan My
+- Baguette House
 
 ## Recommended Bars
 
