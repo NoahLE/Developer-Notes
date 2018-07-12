@@ -58,6 +58,8 @@ tags: ["travel", "cities"]
 - Chester King Brewery
 - Porter King's Center
 - Perry's Steakhouse & Grille
+- Tan My
+- Baguette House
 
 ## Recommended Bars
 
