@@ -48,3 +48,7 @@ fi
 ```
 
 3. Push the changes with `git push --force --tags origin 'refs/heads/*'`
+
+## Useful commands
+
+* Removing files or folders from version control which are already being tracked can be done with `git rm --cached <file/folder>`
