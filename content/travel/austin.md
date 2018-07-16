@@ -60,6 +60,7 @@ tags: ["travel", "cities"]
 - Perry's Steakhouse & Grille
 - Tan My
 - Baguette House
+- Clay Pot
 
 ## Recommended Bars
 
@@ -68,3 +69,4 @@ tags: ["travel", "cities"]
 - Jester King
 - St Elmos
 - Spider House
+- The Rose Room (has a secret room)
