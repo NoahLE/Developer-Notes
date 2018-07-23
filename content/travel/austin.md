@@ -19,6 +19,7 @@ tags: ["travel", "cities"]
 
 *Note: Some of these spellings may be incorrect. I was just copying down my notes.*
 
+- Gordough's
 - Bone Daddy's
 - Din Ho
 - Pluckers
