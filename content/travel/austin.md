@@ -71,3 +71,4 @@ tags: ["travel", "cities"]
 - St Elmos
 - Spider House
 - The Rose Room (has a secret room)
+- Firehouse (8th and Brazos - secret room)
