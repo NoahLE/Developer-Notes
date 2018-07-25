@@ -62,6 +62,7 @@ tags: ["travel", "cities"]
 - Tan My
 - Baguette House
 - Clay Pot
+- Firehouse (8th + Brazos - secret room)
 
 ## Recommended Bars
 
