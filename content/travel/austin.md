@@ -62,6 +62,7 @@ tags: ["travel", "cities"]
 - Tan My
 - Baguette House
 - Clay Pot
+- East Side Pie
 
 ## Recommended Bars
 
