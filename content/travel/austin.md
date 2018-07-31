@@ -63,6 +63,8 @@ tags: ["travel", "cities"]
 - Baguette House
 - Clay Pot
 - East Side Pie
+- Tomodachi (get the stuff on the wall menu)
+- Foreign & Domestic
 
 ## Recommended Bars
 
