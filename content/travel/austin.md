@@ -76,6 +76,8 @@ tags: ["travel", "cities"]
 - The Rose Room (has a secret room)
 - Firehouse (8th and Brazos - secret room)
 
+- Town Hearth (in Dallas)
+
 ## Apartment and house hunting
 
 ### Useful websites
