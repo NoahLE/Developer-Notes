@@ -65,6 +65,8 @@ tags: ["travel", "cities"]
 - East Side Pie
 - Tomodachi (get the stuff on the wall menu)
 - Foreign & Domestic
+- Charm Korean BBQ
+- Kamuri Tatsuya
 
 ## Recommended Bars
 
