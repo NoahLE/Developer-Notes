@@ -14,6 +14,7 @@ tags: ["travel", "cities"]
 - SoCo area
 - the green belt / sculpture falls / zilker park
 - Castle hill
+- Area around Pennybacker Bridge
 
 ## Recommended Restaurants
 
@@ -67,6 +68,7 @@ tags: ["travel", "cities"]
 - Foreign & Domestic
 - Charm Korean BBQ
 - Kamuri Tatsuya
+- Siena Restaurant
 
 ## Recommended Bars
 
@@ -79,6 +81,12 @@ tags: ["travel", "cities"]
 - Firehouse (8th and Brazos - secret room)
 
 - Town Hearth (in Dallas)
+
+## Recommended Bakeries
+
+- La Pâtisserie
+- 85C
+- Tous Les Jours
 
 ## Apartment and house hunting
 
