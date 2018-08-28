@@ -69,6 +69,7 @@ tags: ["travel", "cities"]
 - Charm Korean BBQ
 - Kamuri Tatsuya
 - Siena Restaurant
+- Musashino Sushi Dokoro
 
 ## Recommended Bars
 
