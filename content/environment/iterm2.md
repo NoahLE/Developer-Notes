@@ -18,3 +18,7 @@ tags: ["environment", "shell"]
     * I recommend using the Solarized Light or Solarized Dark themes (Go to > Preferences > Profiles > Colors > Color Presets > CHOOSE YOUR THEME)
 
 * You many need to install [powerline fonts](https://github.com/powerline/fonts) to get certain characters in themes to work
+
+## Fixing alt arrow navigation
+
+Open the iTerm preferences > Profiles > Keys > Load Preset > select Natural Text Editing
