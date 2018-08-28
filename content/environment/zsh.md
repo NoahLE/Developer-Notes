@@ -7,7 +7,7 @@ tags: ["environment", "shell"]
 
 My `.zshrc` file. See the [bashrc](environemt/bashrc) page for more terminal settings.
 
-## Installation
+## Installation of oh-my-zsh
 
 1. From the terminal run this command
 
@@ -20,10 +20,9 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 ```
 
-## Other tools
+## Other tools for oh-my-zsh
 
 - [Antigen](https://github.com/zsh-users/antigen) is a great tool for managing plugins
-- [Solarized Powerline Theme](https://github.com/kuoe0/oh-my-zsh-solarized-powerline-theme) - A great looking theme for zsh
 
 ## ZSH Configuration
 
