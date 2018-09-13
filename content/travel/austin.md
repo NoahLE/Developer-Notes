@@ -15,6 +15,8 @@ tags: ["travel", "cities"]
 - the green belt / sculpture falls / zilker park
 - Castle hill
 - Area around Pennybacker Bridge
+- Tears of Joy
+- Tuesday Morning
 
 ## Recommended Restaurants
 
@@ -70,6 +72,10 @@ tags: ["travel", "cities"]
 - Kamuri Tatsuya
 - Siena Restaurant
 - Musashino Sushi Dokoro
+- Szechuan house / Hulan spicy (try the hot boiled fish - shey-ju-you)
+
+## Chains
+- Nando (peri peri chicken)
 
 ## Recommended Bars
 
