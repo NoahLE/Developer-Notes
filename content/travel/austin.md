@@ -1,6 +1,6 @@
 ---
 title: Austin, TX
-date: "2018-03-05"
+date: "2018-12-11"
 publish: true
 tags: ["travel", "cities"]
 ---
@@ -77,8 +77,14 @@ tags: ["travel", "cities"]
 - Kabobolicious
 - Peace Bakery
 - NG Cafe (bbq pork)
+- Heo
+- Kome
+- Kura Revolving Sushi
+- Ban Chan (Round Rock)
+- Michoa Cana meat market
 
 ## Chains
+
 - Nando (peri peri chicken)
 
 ## Recommended Bars
@@ -92,7 +98,7 @@ tags: ["travel", "cities"]
 - Firehouse (8th and Brazos - secret room)
 - Blue Owl
 - Still (blackberry drink)
-- 
+- Broken Spoke
 
 - Town Hearth (in Dallas)
 
@@ -101,6 +107,19 @@ tags: ["travel", "cities"]
 - La Pâtisserie
 - 85C
 - Tous Les Jours
+
+## Gaming Stores
+
+- Dragon's Lair
+- Vigilante
+- Emerald Tavern
+- Mothership Games
+- Buddy's Place of Magic
+
+## Vegetable Delivery
+
+- Farm House Delivery
+- Johnson's Backyard
 
 ## Furniture
 
@@ -112,6 +131,10 @@ tags: ["travel", "cities"]
 - Star Furniture
 - Z Gallery
 - Crate and Barrel
+
+## Other
+
+- Texas State Surplus (off 183)
 
 ## Apartment and house hunting
 
