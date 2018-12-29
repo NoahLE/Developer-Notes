@@ -7,14 +7,18 @@ tags: ["environment", "shell"]
 
 ## Shells
 
-* Check out [zsh](zsh.md), I love using this 
+* Check out the [zsh](zsh.md) page!
 
 * [Hyper.io](https://hyper.is/) is another option that some people have recommended
 
-## Theme
+## Themes
 
-* [Powerline themes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+* [Powerline themes](https://github.com/mbadolato/iTerm2-Color-Schemes) - comes by default with iTerm2
 
-    * I recommend using the Solarized Light or Solarized Dark themes (installation instructions [are here](https://github.com/mbadolato/iTerm2-Color-Schemes#installation-instructions))
+    * I recommend using the Solarized Light or Solarized Dark themes (Go to > Preferences > Profiles > Colors > Color Presets > CHOOSE YOUR THEME)
 
 * You many need to install [powerline fonts](https://github.com/powerline/fonts) to get certain characters in themes to work
+
+## Fixing alt arrow navigation
+
+Open the iTerm preferences > Profiles > Keys > Load Preset > select Natural Text Editing
