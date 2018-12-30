@@ -38,6 +38,7 @@ Once you have the IP, open your terminal and run the following command `ssh pi@I
 First, install the newest updates by running:
 
 ```bash
+# Upgrade everything!
 sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade
 ```
 
@@ -46,6 +47,7 @@ Then, open up the config tool by running `sudo raspi-config`.
 I'd recommend changing these options:
 
 1. Change the password for `pi` (Option 1)
+   1. Optional if you delete this account
 2. Change the locale (Option 4 -> I1)
    1. Use spacebar to select and unselect options and enter to proceed
    2. I recommend using UTF-8
@@ -179,8 +181,32 @@ Start up the firewall with `sudo ufw`.
 
 You can check its status at any time using the command `sudo ufw status` or `sudo ufw status verbose`.
 
-Next up is install fail2ban which can be done by running `sudo apt install fail2ban`.
+Next up is install fail2ban. You can use the default settings for a good baseline. This software helps prevent brute force attacks against your pi.
+
+```bash
+# Install fail to ban
+sudo apt install fail2ban
+
+# Make a local file to save any changes you make
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+```
+
+Done!
 
 ## Installing Docker
 
-Installation is pretty simple, just run this command `curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh`.
+Installation is pretty simple. 
+
+```bash
+# Install Docker
+curl -fsSL get.docker.com -o get-docker.sh && sh get-docker.sh
+
+# Add your user account to the docker group
+sudo usermod -aG docker $USER
+
+# Install pip so you can install docker-compose
+sudo apt-get -y install python-pip
+
+# Install docker-compose
+sudo pip install docker-compose
+```
