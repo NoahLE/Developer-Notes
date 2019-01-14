@@ -195,7 +195,7 @@ Done!
 
 ## Installing Docker
 
-Installation is pretty simple. 
+Installation is pretty simple.
 
 ```bash
 # Install Docker
