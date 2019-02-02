@@ -82,6 +82,9 @@ tags: ["travel", "cities"]
 - Kura Revolving Sushi
 - Ban Chan (Round Rock)
 - Michoa Cana meat market
+- T22
+- Violet Crown
+- Dan's Burgers
 
 ## Chains
 
@@ -99,6 +102,8 @@ tags: ["travel", "cities"]
 - Blue Owl
 - Still (blackberry drink)
 - Broken Spoke
+- Shilling Beer
+- Texas Keeper Cider
 
 - Town Hearth (in Dallas)
 
