@@ -24,4 +24,5 @@ The official Pi-Hole installation guide [is located here](https://docs.pi-hole.n
 5. Copy the profile to the device which will be using the VPN
    1. On Linux / Mac the command will be something like `scp PI-USERNAME@PI-ADDRESS:/home/USERNAME/ovpns/PROFILE-NAME.ovpn ~/Downloads`
    2. Double click the file to install it to your OpenVPN client
-6. 
+6. Add the certificate to your VPN of choice (I use `tunnelblick`)
+7. Test the connection!
