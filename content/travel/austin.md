@@ -104,6 +104,8 @@ tags: ["travel", "cities"]
 - Broken Spoke
 - Shilling Beer
 - Texas Keeper Cider
+- Dog House Drinkery
+- Austin Beer Works
 
 - Town Hearth (in Dallas)
 
