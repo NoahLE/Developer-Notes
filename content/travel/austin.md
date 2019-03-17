@@ -106,6 +106,7 @@ tags: ["travel", "cities"]
 - Texas Keeper Cider
 - Dog House Drinkery
 - Austin Beer Works
+- Fairweather
 
 - Town Hearth (in Dallas)
 
