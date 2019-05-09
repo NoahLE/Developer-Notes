@@ -56,6 +56,7 @@ tags: ["travel", "cities"]
 - Agiamo
 - Epicerie
 - Xin Jing BBQ (Houston)
+- Koryo Kalbi Korean BBQ (Dallas)
 - San Tang (SF, CA)
 - Pints House Pizza
 - Hanabi
@@ -85,6 +86,7 @@ tags: ["travel", "cities"]
 - T22
 - Violet Crown
 - Dan's Burgers
+- Sushi Bang Bang
 
 ## Chains
 
@@ -128,6 +130,11 @@ tags: ["travel", "cities"]
 
 - Farm House Delivery
 - Johnson's Backyard
+
+## Grocery Stores
+
+- La Michoacana Meat Market
+- HEB (duh)
 
 ## Furniture
 
