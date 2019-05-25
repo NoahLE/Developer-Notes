@@ -62,7 +62,7 @@ tags: ["travel", "cities"]
 - Hanabi
 - Chester King Brewery
 - Porter King's Center
-- Perry's Steakhouse & Grille
+- Perry's Steakhouse & Grille (check out the Friday pork chop)
 - Tan My
 - Baguette House
 - Clay Pot
@@ -87,6 +87,7 @@ tags: ["travel", "cities"]
 - Violet Crown
 - Dan's Burgers
 - Sushi Bang Bang
+- L'Oca d'Oro
 
 ## Chains
 
