@@ -81,6 +81,36 @@ Warning: Permanently added '<SERVER_IP>' (RSA) to the list of known hosts.
 <USER>@<SERVER_IP>'s password: <PASSWORD> 
 ```
 
+## Changing the SSH Port
+
+This is a simple but effective thing to do to prevent automated attacks.
+
+1. First, find the location of `the sshd_config` file and edit it.
+
+```bash
+# It usually lives at the following location
+sudo vi /etc/ssh/sshd_config
+# You can also search for it by running the following command
+find / -name "sshd_config" 2>/dev/null
+```
+
+2. Find the line which says `Port 22` or `#Port 22` and change it to `Port NEW_PORT` (it should be between port 1024 and 65535).
+
+3. Make sure to add the new port to your firewall! For example, `sudo ufw allow 1234/tcp`
+
+4. Restart the `ssh` or `sshd` service. For Ubuntu use `sudo systemctl restart ssh`.
+
+5. Verify the port is open with one of these commands:
+
+```bash
+ss -tulpn | grep 2222
+netstat -tulpn | grep 2222
+```
+
+6. Log in using your new port! `ssh -p {port} user@server`
+
+More info about changing the port can be [found here](https://www.cyberciti.biz/faq/howto-change-ssh-port-on-linux-or-unix-server/).
+
 ## Debugging SSH
 
 Somethings that could wrong is the ssh-agent isn't running, the key isn't added to the agent, the key hasn't been added to the version control system and activated.
