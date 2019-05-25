@@ -18,6 +18,18 @@ If you would like to access the `root` account and it does not have a password s
 sudo passwd <USERNAME>
 ```
 
+## Creating a new user (with sudo access)
+
+It's a good idea to create a sandbox user so you don't have to use the `root` account.
+
+1. Create a new user with the `adduser NEW_USER` command
+
+2. Add them to the sudo group with `usermod -aG sudo NEW_USER`
+
+3. Switch to the new account so we can test if they have `sudo` access by running `su - NEW_USER`
+
+4. Run something like `sudo apt-get update` to see if the proper permissions are set up
+
 ## Disable Root login
 
 1. Open `/etc/ssh/sshd_config` with your favorite text editor
@@ -39,8 +51,10 @@ PermitRootLogin no
 
 ```bash
 # Restart the service
-sudo systemctl reload sshd.service
+sudo service ssh restart
 ```
+
+4. If you use an SSH key to login, make sure you have added it to the `authorized_keys` file.
 
 ## Disable password authentication
 
@@ -64,6 +78,8 @@ PasswordAuthentication no
 ```bash
 sudo service ssh restart
 ```
+
+4. If you use an SSH key to login, make sure you add it to the new user's `authorized_keys` file (this is usually in `~/.ssh/authorized_keys`)
 
 ## Sources
 
