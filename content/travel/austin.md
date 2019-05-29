@@ -88,6 +88,7 @@ tags: ["travel", "cities"]
 - Dan's Burgers
 - Sushi Bang Bang
 - L'Oca d'Oro
+- Grist Mill Restaurant (New Braunfels)
 
 ## Chains
 
@@ -151,6 +152,7 @@ tags: ["travel", "cities"]
 ## Other
 
 - Texas State Surplus (off 183)
+- Andretti indoor go karting (San Antonio)
 
 ## Apartment and house hunting
 
