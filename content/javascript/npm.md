@@ -18,3 +18,7 @@ npm update -g
 ```bash
 npm ls -g --depth=0
 ```
+
+## Installing Ubuntu
+
+Check out the [installation instructions](https://github.com/nodesource/distributions/blob/master/README.md) here.
