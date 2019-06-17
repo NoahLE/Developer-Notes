@@ -19,6 +19,8 @@ npm update -g
 npm ls -g --depth=0
 ```
 
-## Installing Ubuntu
+## Installing Node and NPM on Ubuntu
 
 Check out the [installation instructions](https://github.com/nodesource/distributions/blob/master/README.md) here.
+
+Follow [these instructions](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) to make sure you don't run into permission errors.
