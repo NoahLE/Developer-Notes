@@ -92,6 +92,7 @@ tags: ["travel", "cities"]
 - Nate’s Seafood Grill (Addison)
 - Interstellar BBQ
 - Fukomoto Sushi
+- Le Barbecue
 
 ## Chains
 
