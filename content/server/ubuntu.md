@@ -34,3 +34,10 @@ sudo apt-get dist-upgrade
 ```bash
 ifconfig
 ```
+
+- Disable the server from responding to pings
+
+```bash
+# Edit `/etc/sysctl.conf` and change the following setting
+net.ipv4.icmp_echo_ignore_all=1
+```
