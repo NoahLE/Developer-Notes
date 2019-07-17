@@ -30,6 +30,16 @@ It's a good idea to create a sandbox user so you don't have to use the `root` ac
 
 4. Run something like `sudo apt-get update` to see if the proper permissions are set up
 
+## Allow SSH for new user
+
+1. After creating the new user account, create a `.ssh` folder for them using `mkdir /home/USER/.ssh`
+
+2. Add an `authorized_keys` file to the `.ssh` folder with `touch /home/USER/.ssh/authorized_keys`
+
+3. Make sure the new ssh folder and file is owned by the user with `chmod 700 /home/USER/.ssh/`
+
+4. Copy the ssh public key into the authorized keys file so you can login and change the permissions of the file with `chmod 600 /home/USER/authorized_keys`
+
 ## Disable Root login
 
 1. Open `/etc/ssh/sshd_config` with your favorite text editor
@@ -83,7 +93,8 @@ sudo service ssh restart
 
 ## Sources
 
+- [General SSH keys guid](https://help.ubuntu.com/community/SSH/OpenSSH/Keys)
 - [Changing user passwords](https://www.tldp.org/LDP/lame/LAME/linux-admin-made-easy/changing-user-passwords.html)
 - [Disabling password authentication](htptps://askubuntu.com/a/435620)
-- [PermitRootLogin explaination](https://askubuntu.com/questions/449364/what-does-without-password-mean-in-sshd-config-file#449372) or [PermitRootLogin setting](https://serverfault.com/a/178087)
+- [PermitRootLogin explanation](https://askubuntu.com/questions/449364/what-does-without-password-mean-in-sshd-config-file#449372) or [PermitRootLogin setting](https://serverfault.com/a/178087)
 - [Setting the root password](https://askubuntu.com/a/364316)

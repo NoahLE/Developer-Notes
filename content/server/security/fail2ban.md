@@ -18,7 +18,7 @@ sudo apt-get install fail2ban
 
 ## Create and edit the default settings
 
-1. Make a copy of the config file for local changes
+1. Make a copy of the config file for local changes with the comments removed
 
 ```bash
 awk '{ printf "# "; print; }' /etc/fail2ban/jail.conf | sudo tee /etc/fail2ban/jail.local
@@ -38,7 +38,7 @@ sudo nano /etc/fail2ban/jail.conf
 # You can add more by separating with a space
 ignoreip = 127.0.0.1/8
 
-# Length a client is banned (in seconds) 
+# Length a client is banned (in seconds)
 bantime = 600
 
 # The number of times a client can fail (maxretry) in the time window (findtime)

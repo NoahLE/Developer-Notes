@@ -80,3 +80,24 @@ server {
 ## Logs
 
 If something goes wrong, you can check `access.log` in `/usr/local/nginx/logs` or `/var/log/nginx`.
+
+## Password Protecting Pages
+
+1. Install the required dependencies with `sudo apt install apache2-utils`
+
+2. Create a password file with `htpasswd -c /etc/nginx/.PASSWORD-FILE-NAME` (the standard is `.htpasswd`)
+
+3. Create any additional users by running the same command without `-c`
+
+4. If you haven't already, create a config file in `etc/nginx/sites-available/SITE-NAME`
+
+5. Add the following lines to the file
+
+```bash
+location /PASSWORDED-URL {
+    auth_basic              "Basic Auth";
+    auth_basic_user_file    "/etc/nginx/.PASSWORD-FILE";
+}
+```
+
+6. Restart nginx with `sudo systemctl nginx restart`
