@@ -21,9 +21,11 @@
 
 Download the newest copy of Raspbian Lite from the [Raspberry Pi website](https://www.raspberrypi.org/downloads/raspbian/).
 
-After downloading, the file needs to be trasferred to a microSD card for installation. I used [Etcher](https://www.balena.io/etcher/) to write the `.zip` file to the card.
+After downloading, the file needs to be trasferred to a microSD card for installation.
+I used [Etcher](https://www.balena.io/etcher/) to write the `.zip` file to the card.
 
-**IMPORTANT** Create a file in the root directoy of the installer with the name `ssh`. This will allow you to log into the Pi for the rest of the installation steps.
+**IMPORTANT** Create a file in the root directory of the `boot` folder with the name `ssh`.
+This will allow you to log into the Pi for the rest of the installation steps.
 
 ## Logging into the Raspberry Pi
 
@@ -46,8 +48,7 @@ Then, open up the config tool by running `sudo raspi-config`.
 
 I'd recommend changing these options:
 
-1. Change the password for `pi` (Option 1)
-   1. Optional if you delete this account
+1. Change the password for `pi` by running the `passwd` command (Optional if you delete this account)
 2. Change the locale (Option 4 -> I1)
    1. Use spacebar to select and unselect options and enter to proceed
    2. I recommend using UTF-8
@@ -136,7 +137,6 @@ I found [this great thread](https://askubuntu.com/questions/46424/how-do-i-add-s
 To create the SSH key run `ssh-keygen -t rsa`.
 
 I'd recommend setting a unique name when creating the key: `Enter file in which to save the key (/Users/username/.ssh/id_rsa): /Users/username/.ssh/raspberry-pi-name`
-
 
 Add the SSH key to your machine using `ssh-add ~/.ssh/key-name` (not the with that ends with `.pub`)
 
