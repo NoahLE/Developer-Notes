@@ -41,7 +41,7 @@ if __name__ == "__main__":
     app.run()
 ```
 
-4. Create a service so the project will run when the server starts
+4. Create a service file in `/etc/systemd/system/` so the project will run when the server starts
 
 ```bash
 [Unit]
