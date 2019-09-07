@@ -142,6 +142,11 @@ Add the SSH key to your machine using `ssh-add ~/.ssh/key-name` (not the with th
 
 Copy the `.pub` version of the key over to the server. You may need to create a `.ssh` folder and `authorized_keys` file.
 
+Alternatively, you can use the following command `ssh-copy-id -i ~/.ssh/THE-KEY USER@HOST`
+
+You can test the new key with the following command:
+`ssh -i ~/.ssh/THE-KEY USER@HOST`
+
 ```bash
 # Create the ssh folder if needed
 mkdir ~/.ssh
@@ -165,6 +170,7 @@ ChallengeResponseAuthentication no
 PasswordAuthentication no
 UsePAM no
 PermitRootLogin no
+AllowUsers USER
 
 # Reload the ssh client
 # OPEN A NEW CONNECTION TO TRY THIS JUST IN CASE SO YOU ARE NOT LOCKED OUT!
@@ -177,7 +183,7 @@ Install the `uncomplicated firewall` software by running `sudo apt install ufw`.
 
 So we don't get kicked off, enable `ssh` connections by running `sudo ufw allow ssh`.
 
-Start up the firewall with `sudo ufw`.
+Start up the firewall with `sudo ufw enable`.
 
 You can check its status at any time using the command `sudo ufw status` or `sudo ufw status verbose`.
 
