@@ -20,7 +20,7 @@ tags: ["travel", "cities"]
 
 ## Recommended Restaurants
 
-*Note: Some of these spellings may be incorrect. I was just copying down my notes.*
+_Note: Some of these spellings may be incorrect. I was just copying down my notes._
 
 - Gordough's
 - Bone Daddy's
@@ -94,6 +94,12 @@ tags: ["travel", "cities"]
 - Fukomoto Sushi
 - Le Barbecue
 - Jack Allen's Kitchen
+- Sip Saam Thai
+- Thai Cuisine
+- Jasmine's Mexican Restaurant
+- Las Cazuelas
+- IM Thai Cuisine
+- Revelry Kitchen
 
 ## Chains
 
@@ -105,6 +111,7 @@ tags: ["travel", "cities"]
 - 4th Tap
 - Jester King
 - St Elmos
+- Lalas
 - Spider House
 - The Rose Room (has a secret room)
 - Firehouse (8th and Brazos - secret room)
@@ -116,6 +123,9 @@ tags: ["travel", "cities"]
 - Dog House Drinkery
 - Austin Beer Works
 - Fairweather
+- Infamous Brewing Company
+- Guadalupe Brewing Company
+- The Growling (San Marcos werewolf bar)
 
 - Town Hearth (in Dallas)
 
@@ -142,6 +152,7 @@ tags: ["travel", "cities"]
 
 - La Michoacana Meat Market
 - HEB (duh)
+- Desi Brothers Farmer's Market
 
 ## Furniture
 
@@ -153,6 +164,16 @@ tags: ["travel", "cities"]
 - Star Furniture
 - Z Gallery
 - Crate and Barrel
+
+## Driving Roads
+
+- 2222
+- Bullock Hollow
+- 2769
+- Twisted Sisters
+- Lime Creek Road
+- Spicewood Springs
+- 1431
 
 ## Other
 

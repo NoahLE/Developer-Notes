@@ -48,7 +48,7 @@ When you're done, click the blue `Next` button on the right side of the screen.
 
 ### Race
 
-All races are about the same with some slight differences. You can select each race to see the benefits, their stats, backstory, and so on. 
+All races are about the same with some slight differences. You can select each race to see the benefits, their stats, backstory, and so on.
 
 You can see even more information by clicking the `_____ Details Page` link after selecting a race.
 
@@ -107,3 +107,8 @@ When you're done, click the blue `Next` button
 When you're done, click the blue `Next` button.
 
 **You have now finished your character creation!**
+
+## Other systems
+
+- Outbreak Undead
+- You met in a Tavern
