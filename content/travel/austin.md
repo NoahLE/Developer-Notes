@@ -100,6 +100,7 @@ _Note: Some of these spellings may be incorrect. I was just copying down my note
 - Las Cazuelas
 - IM Thai Cuisine
 - Revelry Kitchen
+- Homestyle Pizza
 
 ## Chains
 
@@ -188,6 +189,13 @@ _Note: Some of these spellings may be incorrect. I was just copying down my note
 - [Austin Home Search](https://austinhomesearch.com/)
 - [Apartments.com](https://apartments.com)
 - [Craigslist](https://austin.craigslist.org/)
+
+## Miata Shops (and parts)
+
+- Flying Miata
+- Begi engineering
+- Hard dog 
+- Boss frog
 
 ### Other tips
 
