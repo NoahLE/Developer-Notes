@@ -17,7 +17,7 @@ These are the steps needed to get up and running
 
 ## Prerequisites
 
-- A [Twitch.tv](https://www.twitch.tv) account
+- A [GMail Email account](https://www.gmail.com) account
 - A [DnDBeyond](https://www.dndbeyond.com/) account (you need a Twitch.tv account to sign in)
 - A [Roll20](https://roll20.net) account
 
@@ -25,7 +25,7 @@ These are the steps needed to get up and running
 
 One thing worth mentioning before we start is that you can always go back and edit your character later.
 
-1. After creating your Twitch account, log into the DnDBeyond website.
+1. After creating your GMail account, log into the DnDBeyond website.
 2. In the top left, mouse over the `Creations` link and select `My Characters`
 3. In the top right, click the `Create a Character` button
 
