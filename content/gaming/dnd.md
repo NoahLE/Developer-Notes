@@ -18,7 +18,7 @@ These are the steps needed to get up and running
 ## Prerequisites
 
 - A [GMail Email account](https://www.gmail.com) account
-- A [DnDBeyond](https://www.dndbeyond.com/) account (you need a Twitch.tv account to sign in)
+- A [DnDBeyond](https://www.dndbeyond.com/) account (you need a GMail account to sign in)
 - A [Roll20](https://roll20.net) account
 
 ## Character Creation
