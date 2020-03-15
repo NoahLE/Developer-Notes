@@ -101,6 +101,8 @@ _Note: Some of these spellings may be incorrect. I was just copying down my note
 - IM Thai Cuisine
 - Revelry Kitchen
 - Homestyle Pizza
+- Mandras Dhaba
+- Chez Nous
 
 ## Chains
 
