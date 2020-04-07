@@ -103,6 +103,8 @@ _Note: Some of these spellings may be incorrect. I was just copying down my note
 - Homestyle Pizza
 - Mandras Dhaba
 - Chez Nous
+- Louie Miller (Taylor)
+- Casa Garcia (Round Rock)
 
 ## Chains
 
@@ -196,7 +198,7 @@ _Note: Some of these spellings may be incorrect. I was just copying down my note
 
 - Flying Miata
 - Begi engineering
-- Hard dog 
+- Hard dog
 - Boss frog
 
 ### Other tips
