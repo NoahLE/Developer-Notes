@@ -30,39 +30,35 @@ These are some ZSH settings I've found to be helpful.
 See the [bashrc](environment/bashrc) page for more useful settings.
 
 ```bash
-# Path to oh-my-zsh
-export ZSH=/Users/crux/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# How often to auto-update (in days).
+export ZSH="/home/jinx/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=7
 
-# Command auto-correction
+source $ZSH/oh-my-zsh.sh
+
+ZSH_THEME="agnoster"
 ENABLE_CORRECTION="true"
+# DISABLE_MAGIC_FUNCTIONS=true
+# COMPLETION_WAITING_DOTS="true"
 
-# User configuration
-source /usr/local/share/antigen/antigen.zsh
+plugins=(git)
 
-# Set up antigen
-antigen use oh-my-zsh
+# Aliases
+alias ohmyzsh="code ~/.oh-my-zsh"
+alias ua="sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y"
+alias updatethefuck="pip3 install thefuck --upgrade"
 
-# Bundle install
-antigen bundle git
-antigen bundle git-extras
-antigen bundle pip
-antigen bundle brew
-antigen bundle python
-antigen bundle zlsun/solarized-man
-antigen bundle command-not-found
-antigen bundle pylint
+# The fuck
+eval $(thefuck --alias)
 
-# Load a theme
-antigen theme KuoE0/oh-my-zsh-solarized-powerline-theme solarized-powerline
-
-# Tell antigen you're done
-antigen apply
-
-# Syntax highlighting
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 ```
 
 ## Caveats
