@@ -33,8 +33,6 @@ See the [bashrc](environment/bashrc) page for more useful settings.
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-source $ZSH/oh-my-zsh.sh
-
 export ZSH="/home/jinx/.oh-my-zsh"
 export UPDATE_ZSH_DAYS=7
 
@@ -46,6 +44,7 @@ ENABLE_CORRECTION="true"
 plugins=(git)
 
 # Aliases
+alias ls="ls -la"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias ua="sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get autoremove -y && sudo apt-get autoclean -y"
 alias updatethefuck="pip3 install thefuck --upgrade"
@@ -59,6 +58,9 @@ eval $(thefuck --alias)
 # else
 #   export EDITOR='mvim'
 # fi
+
+# Load that shit
+source $ZSH/oh-my-zsh.sh
 ```
 
 ## Caveats

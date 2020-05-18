@@ -5,6 +5,10 @@ publish: true
 tags: ["websites", "security"]
 ---
 
+## Resources
+
+- [OWASP Cheatsheet](https://cheatsheetseries.owasp.org/)
+
 ## CTF
 
 - [Github CTF Writeups](https://github.com/ctfs/) - CTF writups
