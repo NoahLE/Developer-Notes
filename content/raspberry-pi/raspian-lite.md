@@ -24,8 +24,7 @@ Download the newest copy of Raspbian Lite from the [Raspberry Pi website](https:
 After downloading, the file needs to be trasferred to a microSD card for installation.
 I used [Etcher](https://www.balena.io/etcher/) to write the `.zip` file to the card.
 
-**IMPORTANT** Create a file in the root directory of the `boot` folder with the name `ssh`.
-This will allow you to log into the Pi for the rest of the installation steps.
+**Create a file in the root directory of the `boot` folder with the name `ssh`. This will allow you to log into the Pi for the rest of the installation steps.**
 
 ## Logging into the Raspberry Pi
 
